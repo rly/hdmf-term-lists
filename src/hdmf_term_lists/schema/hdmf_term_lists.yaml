@@ -14,11 +14,28 @@ prefixes:
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
+  RO: http://purl.obolibrary.org/obo/RO_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  obo: http://purl.obolibrary.org/obo/
+
+  # can you specify versions? TODO
+
+default_curi_maps:
+  - semweb_context  # will load a bunch of common semantic web urls including rdfs
+  # see https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.yaml
 default_prefix: hdmf_term_lists
 default_range: string
 
 imports:
   - linkml:types
+
+# n-dimensional arrays in LinkML?
+# instead of making a 2-d array class, make a Sample class or a Lat/Long measurement class
+# not explicitly a 2-D array.
+# separate the mapping problem from the serialization problem.
+# a default serialization will be very verbose
+
+
 
 classes:
 
@@ -36,27 +53,126 @@ classes:
     description: >-
       Represents a Subject
     slots:
+      - species
       - primary_email
       - birth_date
       - age_in_years
       - vital_status
     slot_usage:
-      primary_email:
+      primary_email:  # override the pattern defined in the slot
         pattern: "^\\S+@[\\S+\\.]+\\S+"
-        
+
+  ElectrodeRecording:
+    # this class represents an individual measurement (or element in the 2-D array)
+    attributes:
+      time:
+        range: Time  # reference by default. serialization will store just the identifier
+        rank: 0  # when serializing, select this as the first dimension/axis
+        required: true
+      electrode:
+        range: Electrode
+        rank: 1
+        required: true
+      value:
+        range: float
+        # unit:
+        #   ucum_code: v
+      unique_keys:  # make sure there is only one value for each (time, channel)
+        combination:  # name this anything
+          unique_key_slots:
+            - time
+            - channel
+    # could write a custom function to serialize to a numpy array / xarray
+    # LinkML considering building something like this functionality in
+
+  RegularlySampledElectrodeRecording:
+
+
+  ElectrodeRecordingDataset:
+    # store a collection of ElectrodeRecording objects.
+    # when serializing, the `value` elements can be encoded as a 2-dimensional array of time x channels
+    # where the values are voltage measurements from electrode channels over time
+    attributes:
+      values:
+        range: ElectrodeRecording
+        multivalued: true
+        required: true
+      timestamps:
+        range: TimeDataset
+      electrodes:
+        range: ElectrodeDataset
+      description:
+        description: Description of the electrode recording dataset
+      conversion_factor:
+        range: float
+        description: Value to multiply the values in `values` by to get the data in volts.
+      # one of timestamps or (sampling rate, starting time)
+
+  TimeDataset:  # the exact set of timestamps might be reused in another BehavioralRecordingDataset
+    attributes:
+      values:
+        range: Time
+        multivalued: true
+      sampling_rate:
+        range: float
+        required: false
+      starting_time:
+        range: float
+        required: false
+      # one_of [[values], [sampling_rate, starting_time]] is required
+
+  ElectrodeDataset:
+    attributes:
+      values:
+        range: Electrode
+        multivalued: true
+
+  Time:
+    attributes:
+      index:
+        range: int
+        identifier: true
+      value:
+        range: float
+        unit:
+          ucum_code: s
+        required: false
+        equals_expression: starting_time + index * 1/sampling_rate  # how do we get starting_time, sampling_rate here?
+        # does starting_time and sampling_rate need to be stored here?
+
+  Electrode:
+    attributes:
+      index:
+        range: int
+        identifier: true
+      location:
+        description: Free-form text description of the location of the electrode in the brain.
+
   SubjectCollection:
-    tree_root: true
+    tree_root: true  # in the sense of the json document tree. false by default
     description: >-
       A holder for Subject objects
     attributes:
-      entries:
+      entries:  # defined locally, cannot be reused unless in subclasses
+        # by default, this is a dict. `inlined_as_list: true` will inline as a list.
         range: Subject
-        multivalued: true
-        inlined: true
+        multivalued: true  # 0 to many elements
+        inlined: true  # values are specified inline in the json dict (instead of a reference)
 
-slots:
+slots:  # first-class element, can be reused within this file or outside this file if imported
+  species:
+    slot_uri: RO:0002175
+    range: RecommendedSpecies
+    # how do we allow for new ones?
+    # could restrict ID to NCBI Taxon, or even branches of NCBI Taxon, e.g., subclass of animal
+
+  # option 1: two fields: recommended_species, unrestricted_species
+  # option 2: Union of ranges
+  # technically, UnrestrictedSpecies subsumes RecommendedSpecies, so we could just use UnrestrictedSpecies
+
+
   id:
-    identifier: true
+    identifier: true  # required, unique
     slot_uri: schema:identifier
     range: uriorcurie
     description: A unique identifier for a thing
@@ -77,15 +193,45 @@ slots:
     range: integer
     description: Number of years since birth
   vital_status:
-    range: PersonStatus
+    range: PersonStatus  # enum defined below
     description: living or dead status
-    
+
 enums:
+  RecommendedSpecies:
+    permissible_values:
+      Homo sapiens:  # custom alias
+        description: a human
+        meaning: NCBITaxon:9606
+      Human:  # another alias. strongly NOT recommended. should be handled by a normalization procedure upstream.
+        # can use a mapping file like this or a google sheet (schemasheets) that maps local name to URI
+        description: a human
+        meaning: NCBITaxon:9606
+      Mus musculus:
+      Rattus norvegicus:
+      Drosophila melanogaster:
+    # can tag as "recommended field" for validator
+  UnrestrictedSpecies:  # user must enter a CURIE, e.g., NCBITaxon:9606
+    reachable_from:
+      source_ontology: obo:ncbitaxon  # by convention. the xx.owl should exist even if the URI is odd
+      source_nodes:
+        - NCBITaxon:33208  # Metazoa (Animalia)
+      include_self: false  # do not allow Metazoa itself
+      # could restrict to species only, but that is more complicated.
+      relationship_types:
+        - rdfs:subClassOf
+      # could build a boolean query expression that allows you to pick from multiple ontologies
+      # genotype - stick to MGI, Chris says
+  # to allow custom mapping, then provide a way for users to provide their own LinkML schema
+
+  # dynamic validation: requires web service. can be costly. can get different results on different days...
+  # run value set expander: run a one-time query that generates a derived list. a static artifact that can
+  # be versioned alongside other artifacts.
+
   PersonStatus:
     permissible_values:
-      ALIVE:
+      ALIVE:  # user-defined. upper case is conventional in python, but can be anything.
         description: the person is living
-        meaning: PATO:0001421 
+        meaning: PATO:0001421
       DEAD:
         description: the person is deceased
         meaning: PATO:0001422

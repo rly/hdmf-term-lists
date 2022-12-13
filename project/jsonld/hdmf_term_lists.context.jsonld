@@ -1,0 +1,47 @@
+{
+   "_comments": "Auto generated from hdmf_term_lists.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2022-12-13T10:36:00\n    Schema: hdmf-term-lists\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/hdmf-dev/hdmf-term-lists\n    description: Example LinkML schema to demonstrate storage of term lists.\n    license: MIT\n    ",
+   "@context": {
+      "PATO": {
+         "@id": "http://purl.obolibrary.org/obo/PATO_",
+         "@prefix": true
+      },
+      "biolink": "https://w3id.org/biolink/",
+      "example": "https://example.org/",
+      "hdmf_term_lists": "https://w3id.org/hdmf-dev/hdmf-term-lists/",
+      "linkml": "https://w3id.org/linkml/",
+      "schema": "http://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "@vocab": "https://w3id.org/hdmf-dev/hdmf-term-lists/",
+      "age_in_years": {
+         "@type": "xsd:integer"
+      },
+      "birth_date": {
+         "@type": "xsd:date",
+         "@id": "schema:birthDate"
+      },
+      "description": {
+         "@id": "schema:description"
+      },
+      "id": "@id",
+      "name": {
+         "@id": "schema:name"
+      },
+      "primary_email": {
+         "@id": "schema:email"
+      },
+      "entries": {
+         "@type": "@id"
+      },
+      "vital_status": {
+         "@context": {
+            "@vocab": "@null",
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         }
+      },
+      "NamedThing": {
+         "@id": "schema:Thing"
+      }
+   }
+}

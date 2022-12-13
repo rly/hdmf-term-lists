@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "c917617feee59d5cd10d65666e8fd975a969444d",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "hdmf-term-lists",
+      "__project_slug": "hdmf_term_lists",
+      "github_org": "hdmf-dev",
+      "__source_path": "src/hdmf_term_lists/schema/hdmf_term_lists.yaml",
+      "project_description": "Example LinkML schema to demonstrate storage of term lists.",
+      "full_name": "Ryan Ly",
+      "email": "rly@lbl.gov",
+      "__author": "Ryan Ly <rly@lbl.gov>",
+      "license": "MIT",
+      "main_schema_class": "Subject",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

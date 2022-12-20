@@ -2,77 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/NamedThing/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Any/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/PersonStatus/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/ElectricalArray/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Subject/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Electrode/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/SubjectCollection/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/ElectrodeSeries/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/age_in_years/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/OneDimensionalSeries/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/birth_date/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/TimestampSeries/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/description/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/TwoDimensionalArray/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/entries/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/axis0/</loc>
+         <lastmod>2022-12-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/axis1/</loc>
+         <lastmod>2022-12-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/data_type/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/hdmf-term-lists/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/id/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/impedance/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/name/</loc>
-         <lastmod>2022-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/primary_email/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/types/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/vital_status/</loc>
-         <lastmod>2022-12-13</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/values/</loc>
+         <lastmod>2022-12-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

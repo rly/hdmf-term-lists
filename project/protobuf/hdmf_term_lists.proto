@@ -1,23 +1,34 @@
-// A generic grouping for any identifiable entity
-message NamedThing
+message ElectricalArray
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
+  timestampSeries axis0 = 0
+  electrodeSeries axis1 = 0
+ repeated  float values = 0
  }
-// Represents a Subject
-message Subject
+message Electrode
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+  float impedance = 0
  }
-// A holder for Subject objects
-message SubjectCollection
+message ElectrodeSeries
  {
- repeated  subject entries = 0
+  string name = 0
+  string dataType = 0
+ repeated  electrode values = 0
+ }
+message OneDimensionalSeries
+ {
+  string name = 0
+  string dataType = 0
+ repeated  string values = 0
+ }
+message TimestampSeries
+ {
+  string name = 0
+  string dataType = 0
+ repeated  float values = 0
+ }
+message TwoDimensionalArray
+ {
+  oneDimensionalSeries axis0 = 0
+  oneDimensionalSeries axis1 = 1
+ repeated  string values = 0
  }

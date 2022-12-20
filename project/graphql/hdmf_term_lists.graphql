@@ -1,23 +1,40 @@
-type NamedThing
+type ElectricalArray
   {
-    id: Uriorcurie!
-    name: String
-    description: String
+    axis0: TimestampSeries!
+    axis1: ElectrodeSeries!
+    values: [Float]!
   }
 
-type Subject
+type Electrode
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    impedance: Float
   }
 
-type SubjectCollection
+type ElectrodeSeries
   {
-    entries: [Subject]
+    name: String!
+    dataType: String
+    values: [Electrode]!
+  }
+
+type OneDimensionalSeries
+  {
+    name: String!
+    dataType: String
+    values: [String]!
+  }
+
+type TimestampSeries
+  {
+    name: String!
+    dataType: String
+    values: [Float]!
+  }
+
+type TwoDimensionalArray
+  {
+    axis0: OneDimensionalSeries!
+    axis1: OneDimensionalSeries!
+    values: [String]!
   }
 

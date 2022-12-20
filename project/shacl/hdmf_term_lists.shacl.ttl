@@ -1,71 +1,97 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
 @prefix hdmf_term_lists: <https://w3id.org/hdmf-dev/hdmf-term-lists/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-schema:Thing a sh:NodeShape ;
+hdmf_term_lists:ElectricalArray a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A generic grouping for any identifiable entity" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path schema:identifier ],
-        [ sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path schema:name ],
-        [ sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
+    sh:property [ sh:minCount 1 ;
             sh:order 2 ;
-            sh:path schema:description ] ;
-    sh:targetClass schema:Thing .
-
-hdmf_term_lists:SubjectCollection a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A holder for Subject objects" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class hdmf_term_lists:Subject ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path hdmf_term_lists:entries ] ;
-    sh:targetClass hdmf_term_lists:SubjectCollection .
-
-hdmf_term_lists:Subject a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Represents a Subject" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "Date on which a person is born" ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:class hdmf_term_lists:ElectrodeSeries ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 1 ;
-            sh:path schema:birthDate ],
-        [ sh:description "A human-readable name for a thing" ;
+            sh:path hdmf_term_lists:axis1 ],
+        [ sh:class hdmf_term_lists:TimestampSeries ;
             sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path schema:name ],
-        [ sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 6 ;
-            sh:path schema:description ],
-        [ sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path schema:identifier ],
-        [ sh:description "Number of years since birth" ;
-            sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path hdmf_term_lists:age_in_years ],
-        [ sh:description "living or dead status" ;
-            sh:in ( PATO:0001421 PATO:0001422 "UNKNOWN" ) ;
-            sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path hdmf_term_lists:vital_status ],
-        [ sh:description "The main email address of a person" ;
-            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 0 ;
-            sh:path schema:email ;
-            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ] ;
-    sh:targetClass hdmf_term_lists:Subject .
+            sh:path hdmf_term_lists:axis0 ] ;
+    sh:targetClass hdmf_term_lists:ElectricalArray .
+
+hdmf_term_lists:TwoDimensionalArray a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:class hdmf_term_lists:OneDimensionalSeries ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:axis1 ],
+        [ sh:class hdmf_term_lists:OneDimensionalSeries ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:axis0 ] ;
+    sh:targetClass hdmf_term_lists:TwoDimensionalArray .
+
+hdmf_term_lists:Electrode a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:impedance ] ;
+    sh:targetClass hdmf_term_lists:Electrode .
+
+hdmf_term_lists:ElectrodeSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hdmf_term_lists:Electrode ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:data_type ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ] ;
+    sh:targetClass hdmf_term_lists:ElectrodeSeries .
+
+hdmf_term_lists:TimestampSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:data_type ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ] ;
+    sh:targetClass hdmf_term_lists:TimestampSeries .
+
+hdmf_term_lists:OneDimensionalSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:data_type ] ;
+    sh:targetClass hdmf_term_lists:OneDimensionalSeries .
 

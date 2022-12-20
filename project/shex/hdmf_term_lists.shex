@@ -2,7 +2,6 @@ BASE <https://w3id.org/hdmf-dev/hdmf-term-lists/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema: <http://schema.org/>
 
 
 linkml:String xsd:string
@@ -35,32 +34,62 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
-<NamedThing>  (
+<ElectricalArray> CLOSED {
+    (  $<ElectricalArray_tes> (  &<TwoDimensionalArray_tes> ;
+          rdf:type [ <TwoDimensionalArray> ] ? ;
+          <axis0> @<TimestampSeries> ;
+          <axis1> @<ElectrodeSeries> ;
+          <values> @linkml:Float +
+       ) ;
+       rdf:type [ <ElectricalArray> ] ?
+    )
+}
+
+<Electrode> CLOSED {
+    (  $<Electrode_tes> <impedance> @linkml:Float ? ;
+       rdf:type [ <Electrode> ] ?
+    )
+}
+
+<ElectrodeSeries> CLOSED {
+    (  $<ElectrodeSeries_tes> (  &<OneDimensionalSeries_tes> ;
+          rdf:type [ <OneDimensionalSeries> ] ? ;
+          <values> @<Electrode> +
+       ) ;
+       rdf:type [ <ElectrodeSeries> ]
+    )
+}
+
+<OneDimensionalSeries>  (
     CLOSED {
-       (  $<NamedThing_tes> (  schema:name @linkml:String ? ;
-             schema:description @linkml:String ?
+       (  $<OneDimensionalSeries_tes> (  <name> @linkml:String ;
+             <data_type> @linkml:String ? ;
+             <values> @linkml:String +
           ) ;
-          rdf:type [ schema:Thing ]
+          rdf:type [ <OneDimensionalSeries> ]
        )
-    } OR @<Subject>
+    } OR @<ElectrodeSeries> OR @<TimestampSeries>
 )
 
-<Subject> CLOSED {
-    (  $<Subject_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema:Thing ] ? ;
-          schema:email @linkml:String ? ;
-          schema:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> @<PersonStatus> ?
+<TimestampSeries> CLOSED {
+    (  $<TimestampSeries_tes> (  &<OneDimensionalSeries_tes> ;
+          rdf:type [ <OneDimensionalSeries> ] ? ;
+          <data_type> @linkml:String ? ;
+          <values> @linkml:Float +
        ) ;
-       rdf:type [ <Subject> ]
+       rdf:type [ <TimestampSeries> ]
     )
 }
 
-<SubjectCollection> CLOSED {
-    (  $<SubjectCollection_tes> <entries> @<Subject> * ;
-       rdf:type [ <SubjectCollection> ] ?
-    )
-}
+<TwoDimensionalArray>  (
+    CLOSED {
+       (  $<TwoDimensionalArray_tes> (  <axis0> @<OneDimensionalSeries> ;
+             <axis1> @<OneDimensionalSeries> ;
+             <values> @linkml:String +
+          ) ;
+          rdf:type [ <TwoDimensionalArray> ] ?
+       )
+    } OR @<ElectricalArray>
+)
 
 

@@ -1,11 +1,11 @@
 {
+   "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "RO": "http://purl.obolibrary.org/obo/RO_",
    "biolink": "https://w3id.org/biolink/",
    "example": "https://example.org/",
    "hdmf_term_lists": "https://w3id.org/hdmf-dev/hdmf-term-lists/",
    "linkml": "https://w3id.org/linkml/",
-   "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
-   }
+   "obo": "http://purl.obolibrary.org/obo/",
+   "schema": "http://schema.org/"
 }

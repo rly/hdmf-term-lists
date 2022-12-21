@@ -115,3 +115,4 @@ classes:
 # - annotate the schema with ontology terms -- for a fuller ElectricalArray example
 # - embed this in a full end-to-end example -- experimental metadata plus data
 # - explore how to store clusters of these data
+# - does CORAL support inheritance/extension of data types?

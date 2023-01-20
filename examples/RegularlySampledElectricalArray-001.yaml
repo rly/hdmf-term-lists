@@ -1,0 +1,17 @@
+axis0:
+  name: time
+  starting_time: 0.0
+  sampling_rate: 0.1
+  length: 2
+axis1:
+  name: electrode
+  values:
+    - name: elec0
+      impedance: 1.2
+    - name: elec1
+      impedance: 3.4
+values:  # order implied as row-wise
+  - 1.1  # (0, elec0)
+  - 2.2  # (0, elec1)
+  - 3.3  # (1, elec0)
+  - 4.4  # (1, elec1)

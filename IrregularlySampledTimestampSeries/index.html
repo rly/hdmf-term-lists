@@ -244,7 +244,7 @@
 </tr>
 <tr>
 <td><a href="../values/">values</a></td>
-<td>0..1 <br/> NONE</td>
+<td>1..* <br/> <a href="../Any/">Any</a></td>
 <td></td>
 <td><a href="../IrregularlySampledOneDimensionalSeries/">IrregularlySampledOneDimensionalSeries</a></td>
 </tr>
@@ -310,9 +310,11 @@ slot_usage:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     unit:
       ucum_code: s
 
@@ -333,16 +335,17 @@ slot_usage:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     unit:
       ucum_code: s
 attributes:
   values:
     name: values
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    rank: 1000
     multivalued: true
     alias: values
     owner: IrregularlySampledTimestampSeries
@@ -350,9 +353,11 @@ attributes:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: Any
     required: true
     unit:

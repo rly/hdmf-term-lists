@@ -242,7 +242,7 @@
 </tr>
 <tr>
 <td><a href="../values/">values</a></td>
-<td>0..1 <br/> NONE</td>
+<td>1..* <br/> <a href="../Any/">Any</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -325,6 +325,7 @@ attributes:
     owner: TwoDimensionalArray
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: OneDimensionalSeries
     required: true
     inlined: true
@@ -339,6 +340,7 @@ attributes:
     owner: TwoDimensionalArray
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: OneDimensionalSeries
     required: true
     inlined: true
@@ -353,6 +355,7 @@ attributes:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: Any
     required: true
 

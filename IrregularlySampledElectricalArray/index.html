@@ -235,19 +235,19 @@
 <td><a href="../axis0/">axis0</a></td>
 <td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 <td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../axis1/">axis1</a></td>
 <td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 <td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../values/">values</a></td>
-<td>0..1 <br/> NONE</td>
+<td>1..* <br/> <a href="../Any/">Any</a></td>
 <td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
@@ -283,12 +283,18 @@
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
 is_a: ElectricalArray
+slots:
+- axis0
+- axis1
+- values
 slot_usage:
   axis0:
     name: axis0
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: IrregularlySampledTimestampSeries
 
 </code></pre>
@@ -304,7 +310,9 @@ slot_usage:
     name: axis0
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: IrregularlySampledTimestampSeries
 attributes:
   axis0:
@@ -315,7 +323,9 @@ attributes:
     owner: IrregularlySampledElectricalArray
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: time
     range: IrregularlySampledTimestampSeries
     required: true
@@ -331,6 +341,7 @@ attributes:
     owner: IrregularlySampledElectricalArray
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: electrode
     range: ElectrodeSeries
     required: true
@@ -346,6 +357,7 @@ attributes:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: float
     required: true
 

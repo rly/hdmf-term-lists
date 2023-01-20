@@ -247,14 +247,14 @@
 <td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
 </tr>
 <tr>
-<td><a href="../axis1/">axis1</a></td>
-<td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+<td><a href="../values/">values</a></td>
+<td>1..* <br/> <a href="../Any/">Any</a></td>
 <td></td>
 <td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
 </tr>
 <tr>
-<td><a href="../values/">values</a></td>
-<td>0..1 <br/> NONE</td>
+<td><a href="../axis1/">axis1</a></td>
+<td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 <td></td>
 <td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
 </tr>
@@ -297,14 +297,18 @@ slot_usage:
     name: axis0
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: time
     range: TimestampSeriesMixin
   axis1:
     name: axis1
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: electrode
     range: ElectrodeSeries
   values:
@@ -313,9 +317,11 @@ slot_usage:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: float
     unit:
       ucum_code: V
@@ -334,14 +340,18 @@ slot_usage:
     name: axis0
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: time
     range: TimestampSeriesMixin
   axis1:
     name: axis1
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: electrode
     range: ElectrodeSeries
   values:
@@ -350,9 +360,11 @@ slot_usage:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: float
     unit:
       ucum_code: V
@@ -365,7 +377,9 @@ attributes:
     owner: ElectricalArray
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: time
     range: TimestampSeriesMixin
     required: true
@@ -379,7 +393,9 @@ attributes:
     owner: ElectricalArray
     domain_of:
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     role: electrode
     range: ElectrodeSeries
     required: true
@@ -395,9 +411,11 @@ attributes:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     range: float
     required: true
     unit:

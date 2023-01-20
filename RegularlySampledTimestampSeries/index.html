@@ -240,32 +240,32 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> NONE</td>
-<td></td>
-<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
-</tr>
-<tr>
 <td><a href="../sampling_rate/">sampling_rate</a></td>
 <td>1..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a></td>
 <td></td>
 <td><a href="../RegularlySampledOneDimensionalSeries/">RegularlySampledOneDimensionalSeries</a></td>
 </tr>
 <tr>
-<td><a href="../offset/">offset</a></td>
-<td>1..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a></td>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> NONE</td>
+<td></td>
+<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+</tr>
+<tr>
+<td><a href="../length/">length</a></td>
+<td>0..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></td>
 <td></td>
 <td><a href="../RegularlySampledOneDimensionalSeries/">RegularlySampledOneDimensionalSeries</a></td>
 </tr>
 <tr>
 <td><a href="../values/">values</a></td>
-<td>0..1 <br/> NONE</td>
+<td>1..* <br/> <a href="../Any/">Any</a></td>
 <td></td>
 <td><a href="../RegularlySampledOneDimensionalSeries/">RegularlySampledOneDimensionalSeries</a></td>
 </tr>
 <tr>
-<td><a href="../length/">length</a></td>
-<td>0..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></td>
+<td><a href="../offset/">offset</a></td>
+<td>1..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a></td>
 <td></td>
 <td><a href="../RegularlySampledOneDimensionalSeries/">RegularlySampledOneDimensionalSeries</a></td>
 </tr>
@@ -331,9 +331,11 @@ slot_usage:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     unit:
       ucum_code: s
 
@@ -354,9 +356,11 @@ slot_usage:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     unit:
       ucum_code: s
 attributes:
@@ -399,10 +403,13 @@ attributes:
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
+    - IrregularlySampledElectricalArray
     - IrregularlySampledOneDimensionalSeries
     - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
-    range: float
+    - IrregularlySampledElectricalArray
+    range: Any
+    required: true
     unit:
       ucum_code: s
     equals_expression: '{array_index} * {sampling_rate} + {offset}'

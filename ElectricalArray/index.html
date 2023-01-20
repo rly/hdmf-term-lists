@@ -209,11 +209,23 @@
       ElectricalArray : axis1
       ElectricalArray : values
 
+
+      ElectricalArray &lt;|-- IrregularlySampledElectricalArray
+      ElectricalArray &lt;|-- RegularlySampledElectricalArray
+
+      ElectricalArray : axis0
+      ElectricalArray : axis1
+      ElectricalArray : values
+
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../TwoDimensionalArray/">TwoDimensionalArray</a><ul>
-<li><strong>ElectricalArray</strong></li>
+<li><strong>ElectricalArray</strong><ul>
+<li><a href="../IrregularlySampledElectricalArray/">IrregularlySampledElectricalArray</a></li>
+<li><a href="../RegularlySampledElectricalArray/">RegularlySampledElectricalArray</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -229,12 +241,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../values/">values</a></td>
-<td>0..1 <br/> NONE</td>
-<td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
-</tr>
-<tr>
 <td><a href="../axis0/">axis0</a></td>
 <td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 <td></td>
@@ -243,6 +249,12 @@
 <tr>
 <td><a href="../axis1/">axis1</a></td>
 <td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+<td></td>
+<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+</tr>
+<tr>
+<td><a href="../values/">values</a></td>
+<td>0..1 <br/> NONE</td>
 <td></td>
 <td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
 </tr>
@@ -287,7 +299,7 @@ slot_usage:
     - TwoDimensionalArray
     - TwoDimensionalArray
     role: time
-    range: TimestampSeries
+    range: TimestampSeriesMixin
   axis1:
     name: axis1
     domain_of:
@@ -298,9 +310,11 @@ slot_usage:
   values:
     name: values
     domain_of:
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
     range: float
     unit:
@@ -322,7 +336,7 @@ slot_usage:
     - TwoDimensionalArray
     - TwoDimensionalArray
     role: time
-    range: TimestampSeries
+    range: TimestampSeriesMixin
   axis1:
     name: axis1
     domain_of:
@@ -333,9 +347,11 @@ slot_usage:
   values:
     name: values
     domain_of:
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
     range: float
     unit:
@@ -351,7 +367,7 @@ attributes:
     - TwoDimensionalArray
     - TwoDimensionalArray
     role: time
-    range: TimestampSeries
+    range: TimestampSeriesMixin
     required: true
     inlined: true
     inlined_as_list: true
@@ -376,9 +392,11 @@ attributes:
     alias: values
     owner: ElectricalArray
     domain_of:
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
     range: float
     required: true

@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://hdmf-dev.github.io/hdmf-term-lists/TimestampSeries/" rel="canonical"/>
+<link href="https://hdmf-dev.github.io/hdmf-term-lists/IrregularlySampledElectricalArray/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: TimestampSeries - hdmf-term-lists</title>
+<title>Class: IrregularlySampledElectricalArray - hdmf-term-lists</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-timestampseries">
+<a class="md-skip" href="#class-irregularlysampledelectricalarray">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: TimestampSeries
+              Class: IrregularlySampledElectricalArray
             
           </span>
 </div>
@@ -152,11 +152,6 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-    Usages
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -201,24 +196,27 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/hdmf-dev/hdmf-term-lists/edit/master/docs/TimestampSeries.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/hdmf-dev/hdmf-term-lists/edit/master/docs/IrregularlySampledElectricalArray.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-timestampseries">Class: TimestampSeries</h1>
-<p>URI: <a href="https://w3id.org/hdmf-dev/hdmf-term-lists/TimestampSeries">hdmf_term_lists:TimestampSeries</a></p>
+<h1 id="class-irregularlysampledelectricalarray">Class: IrregularlySampledElectricalArray</h1>
+<p>URI: <a href="https://w3id.org/hdmf-dev/hdmf-term-lists/IrregularlySampledElectricalArray">hdmf_term_lists:IrregularlySampledElectricalArray</a></p>
 <div class="mermaid"> classDiagram
-    class TimestampSeries
-      OneDimensionalSeries &lt;|-- TimestampSeries
+    class IrregularlySampledElectricalArray
+      ElectricalArray &lt;|-- IrregularlySampledElectricalArray
 
-      TimestampSeries : data_type
-      TimestampSeries : name
-      TimestampSeries : values
+      IrregularlySampledElectricalArray : axis0
+      IrregularlySampledElectricalArray : axis1
+      IrregularlySampledElectricalArray : values
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../OneDimensionalSeries/">OneDimensionalSeries</a><ul>
-<li><strong>TimestampSeries</strong></li>
+<li><a href="../TwoDimensionalArray/">TwoDimensionalArray</a><ul>
+<li><a href="../ElectricalArray/">ElectricalArray</a><ul>
+<li><strong>IrregularlySampledElectricalArray</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -234,41 +232,22 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> NONE</td>
+<td><a href="../axis0/">axis0</a></td>
+<td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 <td></td>
-<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+</tr>
+<tr>
+<td><a href="../axis1/">axis1</a></td>
+<td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+<td></td>
+<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
 </tr>
 <tr>
 <td><a href="../values/">values</a></td>
 <td>0..1 <br/> NONE</td>
 <td></td>
-<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
-</tr>
-<tr>
-<td><a href="../data_type/">data_type</a></td>
-<td>0..1 <br/> NONE</td>
-<td></td>
-<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../ElectricalArray/">ElectricalArray</a></td>
-<td><a href="../axis0/">axis0</a></td>
-<td>range</td>
-<td><a href="./">TimestampSeries</a></td>
+<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
 </tr>
 </tbody>
 </table>
@@ -288,11 +267,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>hdmf_term_lists:TimestampSeries</td>
+<td>hdmf_term_lists:IrregularlySampledElectricalArray</td>
 </tr>
 <tr>
 <td>native</td>
-<td>hdmf_term_lists:TimestampSeries</td>
+<td>hdmf_term_lists:IrregularlySampledElectricalArray</td>
 </tr>
 </tbody>
 </table>
@@ -300,89 +279,75 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: TimestampSeries
+<pre><code class="language-yaml">name: IrregularlySampledElectricalArray
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
-is_a: OneDimensionalSeries
+is_a: ElectricalArray
 slot_usage:
-  data_type:
-    name: data_type
+  axis0:
+    name: axis0
     domain_of:
-    - OneDimensionalSeries
-    - OneDimensionalSeries
-  values:
-    name: values
-    domain_of:
-    - OneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
     - TwoDimensionalArray
-    range: float
-    unit:
-      ucum_code: s
+    range: IrregularlySampledTimestampSeries
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: TimestampSeries
+<pre><code class="language-yaml">name: IrregularlySampledElectricalArray
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
-is_a: OneDimensionalSeries
+is_a: ElectricalArray
 slot_usage:
-  data_type:
-    name: data_type
+  axis0:
+    name: axis0
     domain_of:
-    - OneDimensionalSeries
-    - OneDimensionalSeries
-  values:
-    name: values
-    domain_of:
-    - OneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
     - TwoDimensionalArray
-    range: float
-    unit:
-      ucum_code: s
+    range: IrregularlySampledTimestampSeries
 attributes:
-  name:
-    name: name
+  axis0:
+    name: axis0
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    rank: 1000
-    key: true
-    alias: name
-    owner: TimestampSeries
+    rank: 0
+    alias: axis0
+    owner: IrregularlySampledElectricalArray
     domain_of:
-    - OneDimensionalSeries
-    - Electrode
-    range: string
-  data_type:
-    name: data_type
+    - TwoDimensionalArray
+    - TwoDimensionalArray
+    role: time
+    range: IrregularlySampledTimestampSeries
+    required: true
+    inlined: true
+    inlined_as_list: true
+  axis1:
+    name: axis1
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    rank: 1000
-    alias: data_type
-    owner: TimestampSeries
+    aliases:
+    - y
+    rank: 1
+    alias: axis1
+    owner: IrregularlySampledElectricalArray
     domain_of:
-    - OneDimensionalSeries
-    - OneDimensionalSeries
-    range: string
+    - TwoDimensionalArray
+    role: electrode
+    range: ElectrodeSeries
+    required: true
+    inlined: true
+    inlined_as_list: true
   values:
     name: values
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    rank: 1000
     multivalued: true
     alias: values
-    owner: TimestampSeries
+    owner: IrregularlySampledElectricalArray
     domain_of:
-    - OneDimensionalSeries
-    - TwoDimensionalArray
-    - OneDimensionalSeries
+    - IrregularlySampledOneDimensionalSeries
+    - RegularlySampledOneDimensionalSeries
     - TwoDimensionalArray
     range: float
     required: true
-    unit:
-      ucum_code: s
 
 </code></pre>
 </details>

@@ -29,6 +29,31 @@ default_range: string
 imports:
   - linkml:types
 
+slots:
+  axis0:
+    aliases:
+    - x
+    range: OneDimensionalSeries  # abstract
+    rank: 0
+    required: true
+    inlined: true
+    inlined_as_list: true
+  axis1:
+    aliases:
+    - y
+    range: OneDimensionalSeries  # abstract
+    rank: 1
+    required: true
+    inlined: true
+    inlined_as_list: true
+  values:
+    # one big long list that should be interpreted as a 2d array
+    # TODO serialize as a list of lists.
+    # there is currently no validation that the length of this list = len(axis0) * len(axis1)
+    range: Any  # temp
+    required: true
+    multivalued: true
+
 classes:
 
   Any:
@@ -145,6 +170,10 @@ classes:
     slot_usage:
       axis0:
         range: IrregularlySampledTimestampSeries
+    slots:
+      - axis0
+      - axis1
+      - values
 
   RegularlySampledElectricalArray:
     is_a: ElectricalArray

@@ -8,8 +8,9 @@ CREATE TABLE "ElectricalArray" (
 );
 
 CREATE TABLE "Electrode" (
+	name TEXT, 
 	impedance FLOAT, 
-	PRIMARY KEY (impedance)
+	PRIMARY KEY (name, impedance)
 );
 
 CREATE TABLE "ElectrodeSeries" (
@@ -19,11 +20,24 @@ CREATE TABLE "ElectrodeSeries" (
 	PRIMARY KEY (name, data_type, "values")
 );
 
+CREATE TABLE "NWBFile" (
+	raw_ephys TEXT, 
+	subject TEXT, 
+	PRIMARY KEY (raw_ephys, subject)
+);
+
 CREATE TABLE "OneDimensionalSeries" (
 	name TEXT NOT NULL, 
 	data_type TEXT, 
 	"values" TEXT NOT NULL, 
 	PRIMARY KEY (name, data_type, "values")
+);
+
+CREATE TABLE "Subject" (
+	subject_id TEXT, 
+	sex VARCHAR(6), 
+	species VARCHAR(12), 
+	PRIMARY KEY (subject_id, sex, species)
 );
 
 CREATE TABLE "TimestampSeries" (

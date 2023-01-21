@@ -1,5 +1,5 @@
 # Auto generated from hdmf_term_lists.yaml by pythongen.py version: 0.9.0
-# Generation date: 2022-12-20T12:56:23
+# Generation date: 2023-01-20T16:13:52
 # Schema: hdmf-term-lists
 #
 # id: https://w3id.org/hdmf-dev/hdmf-term-lists
@@ -58,6 +58,8 @@ class ElectrodeSeriesName(OneDimensionalSeriesName):
     pass
 
 
+Any = Any
+
 @dataclass
 class OneDimensionalSeries(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
@@ -68,7 +70,7 @@ class OneDimensionalSeries(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.OneDimensionalSeries
 
     name: Union[str, OneDimensionalSeriesName] = None
-    values: Union[str, List[str]] = None
+    values: Union[Union[dict, Any], List[Union[dict, Any]]] = None
     data_type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -76,12 +78,6 @@ class OneDimensionalSeries(YAMLRoot):
             self.MissingRequiredField("name")
         if not isinstance(self.name, OneDimensionalSeriesName):
             self.name = OneDimensionalSeriesName(self.name)
-
-        if self._is_empty(self.values):
-            self.MissingRequiredField("values")
-        if not isinstance(self.values, list):
-            self.values = [self.values] if self.values is not None else []
-        self.values = [v if isinstance(v, str) else str(v) for v in self.values]
 
         if self.data_type is not None and not isinstance(self.data_type, str):
             self.data_type = str(self.data_type)
@@ -98,26 +94,20 @@ class TwoDimensionalArray(YAMLRoot):
     class_name: ClassVar[str] = "TwoDimensionalArray"
     class_model_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.TwoDimensionalArray
 
-    axis0: Union[str, OneDimensionalSeriesName] = None
-    axis1: Union[str, OneDimensionalSeriesName] = None
-    values: Union[str, List[str]] = None
+    axis0: Union[dict, OneDimensionalSeries] = None
+    axis1: Union[dict, OneDimensionalSeries] = None
+    values: Union[Union[dict, Any], List[Union[dict, Any]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.axis0):
             self.MissingRequiredField("axis0")
-        if not isinstance(self.axis0, OneDimensionalSeriesName):
-            self.axis0 = OneDimensionalSeriesName(self.axis0)
+        if not isinstance(self.axis0, OneDimensionalSeries):
+            self.axis0 = OneDimensionalSeries(**as_dict(self.axis0))
 
         if self._is_empty(self.axis1):
             self.MissingRequiredField("axis1")
-        if not isinstance(self.axis1, OneDimensionalSeriesName):
-            self.axis1 = OneDimensionalSeriesName(self.axis1)
-
-        if self._is_empty(self.values):
-            self.MissingRequiredField("values")
-        if not isinstance(self.values, list):
-            self.values = [self.values] if self.values is not None else []
-        self.values = [v if isinstance(v, str) else str(v) for v in self.values]
+        if not isinstance(self.axis1, OneDimensionalSeries):
+            self.axis1 = OneDimensionalSeries(**as_dict(self.axis1))
 
         super().__post_init__(**kwargs)
 
@@ -162,9 +152,13 @@ class Electrode(YAMLRoot):
     class_name: ClassVar[str] = "Electrode"
     class_model_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.Electrode
 
+    name: Optional[str] = None
     impedance: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
         if self.impedance is not None and not isinstance(self.impedance, float):
             self.impedance = float(self.impedance)
 
@@ -207,20 +201,20 @@ class ElectricalArray(TwoDimensionalArray):
     class_name: ClassVar[str] = "ElectricalArray"
     class_model_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.ElectricalArray
 
-    axis0: Union[str, TimestampSeriesName] = None
-    axis1: Union[str, ElectrodeSeriesName] = None
+    axis0: Union[dict, TimestampSeries] = None
+    axis1: Union[dict, ElectrodeSeries] = None
     values: Union[float, List[float]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.axis0):
             self.MissingRequiredField("axis0")
-        if not isinstance(self.axis0, TimestampSeriesName):
-            self.axis0 = TimestampSeriesName(self.axis0)
+        if not isinstance(self.axis0, TimestampSeries):
+            self.axis0 = TimestampSeries(**as_dict(self.axis0))
 
         if self._is_empty(self.axis1):
             self.MissingRequiredField("axis1")
-        if not isinstance(self.axis1, ElectrodeSeriesName):
-            self.axis1 = ElectrodeSeriesName(self.axis1)
+        if not isinstance(self.axis1, ElectrodeSeries):
+            self.axis1 = ElectrodeSeries(**as_dict(self.axis1))
 
         if self._is_empty(self.values):
             self.MissingRequiredField("values")
@@ -231,8 +225,74 @@ class ElectricalArray(TwoDimensionalArray):
         super().__post_init__(**kwargs)
 
 
-# Enumerations
+@dataclass
+class Subject(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
 
+    class_class_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.Subject
+    class_class_curie: ClassVar[str] = "hdmf_term_lists:Subject"
+    class_name: ClassVar[str] = "Subject"
+    class_model_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.Subject
+
+    subject_id: Optional[str] = None
+    sex: Optional[Union[str, "SubjectSex"]] = None
+    species: Optional[Union[str, "SubjectSpecies"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.subject_id is not None and not isinstance(self.subject_id, str):
+            self.subject_id = str(self.subject_id)
+
+        if self.sex is not None and not isinstance(self.sex, SubjectSex):
+            self.sex = SubjectSex(self.sex)
+
+        if self.species is not None and not isinstance(self.species, SubjectSpecies):
+            self.species = SubjectSpecies(self.species)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class NWBFile(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.NWBFile
+    class_class_curie: ClassVar[str] = "hdmf_term_lists:NWBFile"
+    class_name: ClassVar[str] = "NWBFile"
+    class_model_uri: ClassVar[URIRef] = HDMF_TERM_LISTS.NWBFile
+
+    raw_ephys: Optional[Union[dict, ElectricalArray]] = None
+    subject: Optional[Union[dict, Subject]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.raw_ephys is not None and not isinstance(self.raw_ephys, ElectricalArray):
+            self.raw_ephys = ElectricalArray(**as_dict(self.raw_ephys))
+
+        if self.subject is not None and not isinstance(self.subject, Subject):
+            self.subject = Subject(**as_dict(self.subject))
+
+        super().__post_init__(**kwargs)
+
+
+# Enumerations
+class SubjectSex(EnumDefinitionImpl):
+
+    MALE = PermissibleValue(text="MALE")
+    FEMALE = PermissibleValue(text="FEMALE")
+
+    _defn = EnumDefinition(
+        name="SubjectSex",
+    )
+
+class SubjectSpecies(EnumDefinitionImpl):
+
+    HOMO_SAPIENS = PermissibleValue(text="HOMO_SAPIENS",
+                                               meaning=NCBITAXON["9606"])
+    MUS_MUSCULUS = PermissibleValue(text="MUS_MUSCULUS",
+                                               meaning=NCBITAXON["10090"])
+
+    _defn = EnumDefinition(
+        name="SubjectSpecies",
+    )
 
 # Slots
 class slots:
@@ -245,19 +305,37 @@ slots.oneDimensionalSeries__data_type = Slot(uri=HDMF_TERM_LISTS.data_type, name
                    model_uri=HDMF_TERM_LISTS.oneDimensionalSeries__data_type, domain=None, range=Optional[str])
 
 slots.oneDimensionalSeries__values = Slot(uri=HDMF_TERM_LISTS.values, name="oneDimensionalSeries__values", curie=HDMF_TERM_LISTS.curie('values'),
-                   model_uri=HDMF_TERM_LISTS.oneDimensionalSeries__values, domain=None, range=Union[str, List[str]])
+                   model_uri=HDMF_TERM_LISTS.oneDimensionalSeries__values, domain=None, range=Union[Union[dict, Any], List[Union[dict, Any]]])
 
 slots.twoDimensionalArray__axis0 = Slot(uri=HDMF_TERM_LISTS.axis0, name="twoDimensionalArray__axis0", curie=HDMF_TERM_LISTS.curie('axis0'),
-                   model_uri=HDMF_TERM_LISTS.twoDimensionalArray__axis0, domain=None, range=Union[str, OneDimensionalSeriesName])
+                   model_uri=HDMF_TERM_LISTS.twoDimensionalArray__axis0, domain=None, range=Union[dict, OneDimensionalSeries])
 
 slots.twoDimensionalArray__axis1 = Slot(uri=HDMF_TERM_LISTS.axis1, name="twoDimensionalArray__axis1", curie=HDMF_TERM_LISTS.curie('axis1'),
-                   model_uri=HDMF_TERM_LISTS.twoDimensionalArray__axis1, domain=None, range=Union[str, OneDimensionalSeriesName])
+                   model_uri=HDMF_TERM_LISTS.twoDimensionalArray__axis1, domain=None, range=Union[dict, OneDimensionalSeries])
 
 slots.twoDimensionalArray__values = Slot(uri=HDMF_TERM_LISTS.values, name="twoDimensionalArray__values", curie=HDMF_TERM_LISTS.curie('values'),
-                   model_uri=HDMF_TERM_LISTS.twoDimensionalArray__values, domain=None, range=Union[str, List[str]])
+                   model_uri=HDMF_TERM_LISTS.twoDimensionalArray__values, domain=None, range=Union[Union[dict, Any], List[Union[dict, Any]]])
+
+slots.electrode__name = Slot(uri=HDMF_TERM_LISTS.name, name="electrode__name", curie=HDMF_TERM_LISTS.curie('name'),
+                   model_uri=HDMF_TERM_LISTS.electrode__name, domain=None, range=Optional[str])
 
 slots.electrode__impedance = Slot(uri=HDMF_TERM_LISTS.impedance, name="electrode__impedance", curie=HDMF_TERM_LISTS.curie('impedance'),
                    model_uri=HDMF_TERM_LISTS.electrode__impedance, domain=None, range=Optional[float])
+
+slots.subject__subject_id = Slot(uri=HDMF_TERM_LISTS.subject_id, name="subject__subject_id", curie=HDMF_TERM_LISTS.curie('subject_id'),
+                   model_uri=HDMF_TERM_LISTS.subject__subject_id, domain=None, range=Optional[str])
+
+slots.subject__sex = Slot(uri=HDMF_TERM_LISTS.sex, name="subject__sex", curie=HDMF_TERM_LISTS.curie('sex'),
+                   model_uri=HDMF_TERM_LISTS.subject__sex, domain=None, range=Optional[Union[str, "SubjectSex"]])
+
+slots.subject__species = Slot(uri=HDMF_TERM_LISTS.species, name="subject__species", curie=HDMF_TERM_LISTS.curie('species'),
+                   model_uri=HDMF_TERM_LISTS.subject__species, domain=None, range=Optional[Union[str, "SubjectSpecies"]])
+
+slots.nWBFile__raw_ephys = Slot(uri=HDMF_TERM_LISTS.raw_ephys, name="nWBFile__raw_ephys", curie=HDMF_TERM_LISTS.curie('raw_ephys'),
+                   model_uri=HDMF_TERM_LISTS.nWBFile__raw_ephys, domain=None, range=Optional[Union[dict, ElectricalArray]])
+
+slots.nWBFile__subject = Slot(uri=HDMF_TERM_LISTS.subject, name="nWBFile__subject", curie=HDMF_TERM_LISTS.curie('subject'),
+                   model_uri=HDMF_TERM_LISTS.nWBFile__subject, domain=None, range=Optional[Union[dict, Subject]])
 
 slots.TimestampSeries_data_type = Slot(uri=HDMF_TERM_LISTS.data_type, name="TimestampSeries_data_type", curie=HDMF_TERM_LISTS.curie('data_type'),
                    model_uri=HDMF_TERM_LISTS.TimestampSeries_data_type, domain=TimestampSeries, range=Optional[str])
@@ -269,10 +347,10 @@ slots.ElectrodeSeries_values = Slot(uri=HDMF_TERM_LISTS.values, name="ElectrodeS
                    model_uri=HDMF_TERM_LISTS.ElectrodeSeries_values, domain=ElectrodeSeries, range=Union[Union[dict, Electrode], List[Union[dict, Electrode]]])
 
 slots.ElectricalArray_axis0 = Slot(uri=HDMF_TERM_LISTS.axis0, name="ElectricalArray_axis0", curie=HDMF_TERM_LISTS.curie('axis0'),
-                   model_uri=HDMF_TERM_LISTS.ElectricalArray_axis0, domain=ElectricalArray, range=Union[str, TimestampSeriesName])
+                   model_uri=HDMF_TERM_LISTS.ElectricalArray_axis0, domain=ElectricalArray, range=Union[dict, TimestampSeries])
 
 slots.ElectricalArray_axis1 = Slot(uri=HDMF_TERM_LISTS.axis1, name="ElectricalArray_axis1", curie=HDMF_TERM_LISTS.curie('axis1'),
-                   model_uri=HDMF_TERM_LISTS.ElectricalArray_axis1, domain=ElectricalArray, range=Union[str, ElectrodeSeriesName])
+                   model_uri=HDMF_TERM_LISTS.ElectricalArray_axis1, domain=ElectricalArray, range=Union[dict, ElectrodeSeries])
 
 slots.ElectricalArray_values = Slot(uri=HDMF_TERM_LISTS.values, name="ElectricalArray_values", curie=HDMF_TERM_LISTS.curie('values'),
                    model_uri=HDMF_TERM_LISTS.ElectricalArray_values, domain=ElectricalArray, range=Union[float, List[float]])

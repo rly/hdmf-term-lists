@@ -34,6 +34,12 @@ linkml:Objectidentifier IRI
 
 linkml:Nodeidentifier NONLITERAL
 
+<Any> CLOSED {
+    (  $<Any_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
 <ElectricalArray> CLOSED {
     (  $<ElectricalArray_tes> (  &<TwoDimensionalArray_tes> ;
           rdf:type [ <TwoDimensionalArray> ] ? ;
@@ -46,7 +52,9 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <Electrode> CLOSED {
-    (  $<Electrode_tes> <impedance> @linkml:Float ? ;
+    (  $<Electrode_tes> (  <name> @linkml:String ? ;
+          <impedance> @linkml:Float ?
+       ) ;
        rdf:type [ <Electrode> ] ?
     )
 }
@@ -60,16 +68,33 @@ linkml:Nodeidentifier NONLITERAL
     )
 }
 
+<NWBFile> CLOSED {
+    (  $<NWBFile_tes> (  <raw_ephys> @<ElectricalArray> ? ;
+          <subject> @<Subject> ?
+       ) ;
+       rdf:type [ <NWBFile> ] ?
+    )
+}
+
 <OneDimensionalSeries>  (
     CLOSED {
        (  $<OneDimensionalSeries_tes> (  <name> @linkml:String ;
              <data_type> @linkml:String ? ;
-             <values> @linkml:String +
+             <values> @<Any> +
           ) ;
           rdf:type [ <OneDimensionalSeries> ]
        )
     } OR @<ElectrodeSeries> OR @<TimestampSeries>
 )
+
+<Subject> CLOSED {
+    (  $<Subject_tes> (  <subject_id> @linkml:String ? ;
+          <sex> @<SubjectSex> ? ;
+          <species> @<SubjectSpecies> ?
+       ) ;
+       rdf:type [ <Subject> ] ?
+    )
+}
 
 <TimestampSeries> CLOSED {
     (  $<TimestampSeries_tes> (  &<OneDimensionalSeries_tes> ;
@@ -85,7 +110,7 @@ linkml:Nodeidentifier NONLITERAL
     CLOSED {
        (  $<TwoDimensionalArray_tes> (  <axis0> @<OneDimensionalSeries> ;
              <axis1> @<OneDimensionalSeries> ;
-             <values> @linkml:String +
+             <values> @<Any> +
           ) ;
           rdf:type [ <TwoDimensionalArray> ] ?
        )

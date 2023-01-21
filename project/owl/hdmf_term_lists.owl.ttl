@@ -1,4 +1,5 @@
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix hdmf_term_lists: <https://w3id.org/hdmf-dev/hdmf-term-lists/> .
 @prefix linkml: <https://w3id.org/linkml/> .
@@ -10,17 +11,20 @@
 
 <https://w3id.org/hdmf-dev/hdmf-term-lists> a owl:Ontology ;
     rdfs:label "hdmf-term-lists" ;
-    IAO:0000700 hdmf_term_lists:Electrode,
+    IAO:0000700 hdmf_term_lists:Any,
+        hdmf_term_lists:Electrode,
+        hdmf_term_lists:NWBFile,
         hdmf_term_lists:OneDimensionalSeries,
+        hdmf_term_lists:Subject,
         hdmf_term_lists:TwoDimensionalArray ;
     dcterms:license "MIT" ;
     dcterms:title "hdmf-term-lists" ;
     rdfs:seeAlso "https://hdmf-dev.github.io/hdmf-term-lists" ;
-    linkml:generation_date "2022-12-20T12:56:22" ;
+    linkml:generation_date "2023-01-20T16:13:51" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "hdmf_term_lists.yaml" ;
-    linkml:source_file_date "2022-12-20T12:55:52" ;
-    linkml:source_file_size 2261 .
+    linkml:source_file_date "2023-01-20T16:13:38" ;
+    linkml:source_file_size 3581 .
 
 linkml:SubsetDefinition a owl:Class ;
     rdfs:label "subset_definition" .
@@ -31,34 +35,55 @@ linkml:TypeDefinition a owl:Class ;
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
 
+hdmf_term_lists:NWBFile a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NWBFile" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:Subject ;
+            owl:onProperty hdmf_term_lists:subject ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:ElectricalArray ;
+            owl:onProperty hdmf_term_lists:raw_ephys ] .
+
 hdmf_term_lists:impedance a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "impedance" ;
     rdfs:range linkml:Float .
 
-hdmf_term_lists:name a owl:ObjectProperty,
+hdmf_term_lists:raw_ephys a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "name" ;
+    rdfs:label "raw_ephys" ;
+    rdfs:range hdmf_term_lists:ElectricalArray .
+
+hdmf_term_lists:sex a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sex" ;
+    rdfs:range hdmf_term_lists:SubjectSex .
+
+hdmf_term_lists:species a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "species" ;
+    rdfs:range hdmf_term_lists:SubjectSpecies .
+
+hdmf_term_lists:subject a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subject" ;
+    rdfs:range hdmf_term_lists:Subject .
+
+hdmf_term_lists:subject_id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "subject_id" ;
     rdfs:range linkml:String .
 
-hdmf_term_lists:ElectricalArray a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ElectricalArray" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass hdmf_term_lists:ElectrodeSeries ;
-            owl:onProperty hdmf_term_lists:axis1 ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass hdmf_term_lists:TimestampSeries ;
-            owl:onProperty hdmf_term_lists:axis0 ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom linkml:Float ;
-                        owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
-                        owl:onProperty hdmf_term_lists:values ;
-                        owl:someValuesFrom linkml:Float ] ) ],
-        hdmf_term_lists:TwoDimensionalArray .
+NCBITaxon:10090 a owl:Class,
+        hdmf_term_lists:SubjectSpecies ;
+    rdfs:label "MUS_MUSCULUS" .
+
+NCBITaxon:9606 a owl:Class,
+        hdmf_term_lists:SubjectSpecies ;
+    rdfs:label "HOMO_SAPIENS" .
 
 hdmf_term_lists:ElectrodeSeries a owl:Class,
         linkml:ClassDefinition ;
@@ -71,45 +96,76 @@ hdmf_term_lists:ElectrodeSeries a owl:Class,
                         owl:someValuesFrom hdmf_term_lists:Electrode ] ) ],
         hdmf_term_lists:OneDimensionalSeries .
 
+<https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex#FEMALE> a owl:Class,
+        hdmf_term_lists:SubjectSex ;
+    rdfs:label "FEMALE" .
+
+<https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex#MALE> a owl:Class,
+        hdmf_term_lists:SubjectSex ;
+    rdfs:label "MALE" .
+
 hdmf_term_lists:TwoDimensionalArray a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "TwoDimensionalArray" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom linkml:String ;
-                        owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
-                        owl:onProperty hdmf_term_lists:values ;
-                        owl:someValuesFrom linkml:String ] ) ],
-        [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass hdmf_term_lists:OneDimensionalSeries ;
             owl:onProperty hdmf_term_lists:axis1 ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass hdmf_term_lists:OneDimensionalSeries ;
             owl:onProperty hdmf_term_lists:axis0 ;
-            owl:qualifiedCardinality 1 ] .
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom hdmf_term_lists:Any ;
+                        owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
+                        owl:onProperty hdmf_term_lists:values ;
+                        owl:someValuesFrom hdmf_term_lists:Any ] ) ] .
+
+hdmf_term_lists:name a owl:ObjectProperty,
+        linkml:SlotDefinition .
 
 hdmf_term_lists:Electrode a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Electrode" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:name ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:Float ;
             owl:onProperty hdmf_term_lists:impedance ] .
+
+hdmf_term_lists:Subject a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Subject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:subject_id ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:SubjectSex ;
+            owl:onProperty hdmf_term_lists:sex ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:SubjectSpecies ;
+            owl:onProperty hdmf_term_lists:species ] .
 
 hdmf_term_lists:TimestampSeries a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "TimestampSeries" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty hdmf_term_lists:data_type ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:Float ;
                         owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
                         owl:onProperty hdmf_term_lists:values ;
                         owl:someValuesFrom linkml:Float ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:data_type ],
         hdmf_term_lists:OneDimensionalSeries .
 
 hdmf_term_lists:axis0 a owl:ObjectProperty,
@@ -137,21 +193,53 @@ hdmf_term_lists:data_type a owl:ObjectProperty,
     rdfs:range linkml:String ;
     rdfs:subPropertyOf hdmf_term_lists:data_type .
 
-linkml:ClassDefinition a owl:Class ;
-    rdfs:label "class_definition" .
+hdmf_term_lists:ElectricalArray a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ElectricalArray" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass hdmf_term_lists:ElectrodeSeries ;
+            owl:onProperty hdmf_term_lists:axis1 ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:Float ;
+                        owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
+                        owl:onProperty hdmf_term_lists:values ;
+                        owl:someValuesFrom linkml:Float ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass hdmf_term_lists:TimestampSeries ;
+            owl:onProperty hdmf_term_lists:axis0 ;
+            owl:qualifiedCardinality 1 ],
+        hdmf_term_lists:TwoDimensionalArray .
 
-linkml:SlotDefinition a owl:Class ;
-    rdfs:label "slot_definition" .
+hdmf_term_lists:SubjectSex a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "SubjectSex" ;
+    owl:unionOf ( <https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex#MALE> <https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex#FEMALE> ) ;
+    linkml:permissible_values <https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex#FEMALE>,
+        <https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex#MALE> .
+
+hdmf_term_lists:SubjectSpecies a owl:Class,
+        linkml:EnumDefinition ;
+    rdfs:label "SubjectSpecies" ;
+    owl:unionOf ( NCBITaxon:9606 NCBITaxon:10090 ) ;
+    linkml:permissible_values NCBITaxon:10090,
+        NCBITaxon:9606 .
+
+hdmf_term_lists:Any a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Any" ;
+    skos:exactMatch linkml:Any .
 
 hdmf_term_lists:OneDimensionalSeries a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OneDimensionalSeries" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom linkml:String ;
+                        owl:allValuesFrom hdmf_term_lists:Any ;
                         owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
                         owl:onProperty hdmf_term_lists:values ;
-                        owl:someValuesFrom linkml:String ] ) ],
+                        owl:someValuesFrom hdmf_term_lists:Any ] ) ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty hdmf_term_lists:name ;
@@ -161,7 +249,13 @@ hdmf_term_lists:OneDimensionalSeries a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty hdmf_term_lists:data_type ] .
 
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" .
+
 hdmf_term_lists:values a owl:ObjectProperty,
         linkml:SlotDefinition .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" .
 
 

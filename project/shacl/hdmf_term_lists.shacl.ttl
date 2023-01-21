@@ -1,7 +1,46 @@
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
 @prefix hdmf_term_lists: <https://w3id.org/hdmf-dev/hdmf-term-lists/> .
+@prefix linkml: <https://w3id.org/linkml/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hdmf_term_lists:NWBFile a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hdmf_term_lists:Subject ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:subject ],
+        [ sh:class hdmf_term_lists:ElectricalArray ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:raw_ephys ] ;
+    sh:targetClass hdmf_term_lists:NWBFile .
+
+hdmf_term_lists:TwoDimensionalArray a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hdmf_term_lists:OneDimensionalSeries ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:axis1 ],
+        [ sh:class hdmf_term_lists:OneDimensionalSeries ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:axis0 ],
+        [ sh:class linkml:Any ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ] ;
+    sh:targetClass hdmf_term_lists:TwoDimensionalArray .
 
 hdmf_term_lists:ElectricalArray a sh:NodeShape ;
     sh:closed true ;
@@ -9,89 +48,95 @@ hdmf_term_lists:ElectricalArray a sh:NodeShape ;
     sh:property [ sh:minCount 1 ;
             sh:order 2 ;
             sh:path hdmf_term_lists:values ],
-        [ sh:class hdmf_term_lists:ElectrodeSeries ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path hdmf_term_lists:axis1 ],
         [ sh:class hdmf_term_lists:TimestampSeries ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 0 ;
-            sh:path hdmf_term_lists:axis0 ] ;
-    sh:targetClass hdmf_term_lists:ElectricalArray .
-
-hdmf_term_lists:TwoDimensionalArray a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:minCount 1 ;
-            sh:order 2 ;
-            sh:path hdmf_term_lists:values ],
-        [ sh:class hdmf_term_lists:OneDimensionalSeries ;
+            sh:path hdmf_term_lists:axis0 ],
+        [ sh:class hdmf_term_lists:ElectrodeSeries ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNode ;
             sh:order 1 ;
-            sh:path hdmf_term_lists:axis1 ],
-        [ sh:class hdmf_term_lists:OneDimensionalSeries ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 0 ;
-            sh:path hdmf_term_lists:axis0 ] ;
-    sh:targetClass hdmf_term_lists:TwoDimensionalArray .
+            sh:path hdmf_term_lists:axis1 ] ;
+    sh:targetClass hdmf_term_lists:ElectricalArray .
 
 hdmf_term_lists:Electrode a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
             sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
             sh:path hdmf_term_lists:impedance ] ;
     sh:targetClass hdmf_term_lists:Electrode .
 
 hdmf_term_lists:ElectrodeSeries a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class hdmf_term_lists:Electrode ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path hdmf_term_lists:values ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path hdmf_term_lists:data_type ],
-        [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path hdmf_term_lists:name ] ;
-    sh:targetClass hdmf_term_lists:ElectrodeSeries .
-
-hdmf_term_lists:TimestampSeries a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
             sh:order 1 ;
             sh:path hdmf_term_lists:data_type ],
         [ sh:maxCount 1 ;
             sh:order 0 ;
             sh:path hdmf_term_lists:name ],
-        [ sh:minCount 1 ;
+        [ sh:class hdmf_term_lists:Electrode ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
             sh:path hdmf_term_lists:values ] ;
+    sh:targetClass hdmf_term_lists:ElectrodeSeries .
+
+hdmf_term_lists:Subject a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:in ( "MALE" "FEMALE" ) ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:sex ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:subject_id ],
+        [ sh:in ( NCBITaxon:9606 NCBITaxon:10090 ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:species ] ;
+    sh:targetClass hdmf_term_lists:Subject .
+
+hdmf_term_lists:TimestampSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:data_type ] ;
     sh:targetClass hdmf_term_lists:TimestampSeries .
 
 hdmf_term_lists:OneDimensionalSeries a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:data_type ],
+        [ sh:maxCount 1 ;
             sh:order 0 ;
             sh:path hdmf_term_lists:name ],
-        [ sh:minCount 1 ;
+        [ sh:class linkml:Any ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
             sh:order 2 ;
-            sh:path hdmf_term_lists:values ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path hdmf_term_lists:data_type ] ;
+            sh:path hdmf_term_lists:values ] ;
     sh:targetClass hdmf_term_lists:OneDimensionalSeries .
+
+linkml:Any a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass linkml:Any .
 

@@ -29,6 +29,31 @@ default_range: string
 imports:
   - linkml:types
 
+slots:
+  axis0:
+    aliases:
+    - x
+    range: OneDimensionalSeries  # abstract
+    rank: 0
+    required: true
+    inlined: true
+    inlined_as_list: true
+  axis1:
+    aliases:
+    - y
+    range: OneDimensionalSeries  # abstract
+    rank: 1
+    required: true
+    inlined: true
+    inlined_as_list: true
+  values:
+    # one big long list that should be interpreted as a 2d array
+    # TODO serialize as a list of lists.
+    # there is currently no validation that the length of this list = len(axis0) * len(axis1)
+    range: Any  # temp
+    required: true
+    multivalued: true
+
 classes:
 
   Any:
@@ -38,11 +63,30 @@ classes:
     attributes:
       name:  # the row label
         key: true  # unique when nested (unlike identifier, which is a global identifier)
-      data_type:
+
+  IrregularlySampledOneDimensionalSeries:
+    is_a: OneDimensionalSeries
+    attributes:
       values:
         range: Any  # temp
         multivalued: true
         required: true
+
+  RegularlySampledOneDimensionalSeries:
+    is_a: OneDimensionalSeries
+    attributes:
+      sampling_rate:
+        range: float
+        required: true
+      offset:
+        range: float
+        required: true
+      length:  # must be defined when it cannot be inferred
+        range: integer
+      values:
+        range: float
+        multivalued: true
+        equals_expression: "{array_index} * {sampling_rate} + {offset}"  # TODO define array_index
 
   TwoDimensionalArray:
     attributes:
@@ -64,17 +108,30 @@ classes:
         inlined_as_list: true
       values:
         # one big long list that should be interpreted as a 2d array
-        # or a list of lists
+        # TODO serialize as a list of lists.
+        # there is currently no validation that the length of this list = len(axis0) * len(axis1)
         range: Any  # temp
         required: true
         multivalued: true
 
-  TimestampSeries:
-    is_a: OneDimensionalSeries
+  TimestampSeriesMixin:
+
+
+  IrregularlySampledTimestampSeries:
+    is_a: IrregularlySampledOneDimensionalSeries
+    mixins:
+      - TimestampSeriesMixin
     slot_usage:
-      data_type:
       values:
-        range: float
+        unit:
+          ucum_code: s
+
+  RegularlySampledTimestampSeries:  # like a lazy list
+    is_a: RegularlySampledOneDimensionalSeries
+    mixins:
+      - TimestampSeriesMixin
+    slot_usage:
+      values:
         unit:
           ucum_code: s
 
@@ -88,17 +145,18 @@ classes:
           ucum_code: Ohm
 
   ElectrodeSeries:
-    is_a: OneDimensionalSeries
+    is_a: IrregularlySampledOneDimensionalSeries
     slot_usage:
       values:
         range: Electrode
 
   ElectricalArray:
+    tree_root: true
     is_a: TwoDimensionalArray
     slot_usage:
       axis0:
         role: time
-        range: TimestampSeries
+        range: TimestampSeriesMixin  # abstract
       axis1:
         role: electrode
         range: ElectrodeSeries
@@ -107,42 +165,28 @@ classes:
         unit:
           ucum_code: V
 
-  Subject:
-    attributes:
-      subject_id:
-        range: string
-      sex:
-        range: SubjectSex
-      species:
-        range: SubjectSpecies
+  IrregularlySampledElectricalArray:
+    is_a: ElectricalArray
+    slot_usage:
+      axis0:
+        range: IrregularlySampledTimestampSeries
+    slots:
+      - axis0
+      - axis1
+      - values
 
-  NWBFile:
-    tree_root: true
-    attributes:
-      raw_ephys:
-        range: ElectricalArray
-      subject:
-        range: Subject
+  RegularlySampledElectricalArray:
+    is_a: ElectricalArray
+    slot_usage:
+      axis0:
+        range: RegularlySampledTimestampSeries
 
-enums:
-  SubjectSex:
-    permissible_values:
-      MALE:
-      FEMALE:
-  SubjectSpecies:
-    permissible_values:
-      HOMO_SAPIENS:
-        aliases:
-          - human
-        meaning: NCBITaxon:9606
-      MUS_MUSCULUS:
-        aliases:
-          - mouse
-          - house mouse
-        meaning: NCBITaxon:10090
 
 # TODO:
-# - see also notes doc
+# - explore putting a n-dimensional array into the metamodel (on the order of months) (may not be necessary)
+# - how to encode regularly sampled vs irregularly sampled timestamps
+# - annotate the schema with ontology terms -- for a fuller ElectricalArray example
+# - embed this in a full end-to-end example -- experimental metadata plus data
 # - explore how to store clusters of these data
 # - does CORAL support inheritance/extension of data types?
 # - try to serialize data differently

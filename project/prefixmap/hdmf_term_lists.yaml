@@ -7,5 +7,8 @@
    "hdmf_term_lists": "https://w3id.org/hdmf-dev/hdmf-term-lists/",
    "linkml": "https://w3id.org/linkml/",
    "obo": "http://purl.obolibrary.org/obo/",
-   "schema": "http://schema.org/"
+   "schema": "http://schema.org/",
+   "Any": {
+      "@id": "linkml:Any"
+   }
 }

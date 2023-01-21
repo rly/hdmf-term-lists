@@ -6,6 +6,7 @@ message ElectricalArray
  }
 message Electrode
  {
+  string name = 0
   float impedance = 0
  }
 message ElectrodeSeries
@@ -14,11 +15,22 @@ message ElectrodeSeries
   string dataType = 0
  repeated  electrode values = 0
  }
+message NWBFile
+ {
+  electricalArray rawEphys = 0
+  subject subject = 0
+ }
 message OneDimensionalSeries
  {
   string name = 0
   string dataType = 0
- repeated  string values = 0
+ repeated  any values = 0
+ }
+message Subject
+ {
+  string subjectId = 0
+  subjectSex sex = 0
+  subjectSpecies species = 0
  }
 message TimestampSeries
  {
@@ -30,5 +42,5 @@ message TwoDimensionalArray
  {
   oneDimensionalSeries axis0 = 0
   oneDimensionalSeries axis1 = 1
- repeated  string values = 0
+ repeated  any values = 0
  }

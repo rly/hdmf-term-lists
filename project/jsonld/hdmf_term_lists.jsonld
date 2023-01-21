@@ -224,6 +224,43 @@
       "@type": "TypeDefinition"
     }
   ],
+  "enums": [
+    {
+      "name": "SubjectSex",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "permissible_values": [
+        {
+          "text": "MALE"
+        },
+        {
+          "text": "FEMALE"
+        }
+      ]
+    },
+    {
+      "name": "SubjectSpecies",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSpecies",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "permissible_values": [
+        {
+          "text": "HOMO_SAPIENS",
+          "meaning": "NCBITaxon:9606",
+          "aliases": [
+            "human"
+          ]
+        },
+        {
+          "text": "MUS_MUSCULUS",
+          "meaning": "NCBITaxon:10090",
+          "aliases": [
+            "mouse",
+            "house mouse"
+          ]
+        }
+      ]
+    }
+  ],
   "slots": [
     {
       "name": "oneDimensionalSeries__name",
@@ -261,8 +298,9 @@
       "domain_of": [
         "OneDimensionalSeries"
       ],
-      "range": "string",
+      "range": "Any",
       "required": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -280,6 +318,8 @@
       ],
       "range": "OneDimensionalSeries",
       "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -297,6 +337,8 @@
       ],
       "range": "OneDimensionalSeries",
       "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -309,8 +351,21 @@
       "domain_of": [
         "TwoDimensionalArray"
       ],
-      "range": "string",
+      "range": "Any",
       "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "electrode__name",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/name",
+      "alias": "name",
+      "owner": "Electrode",
+      "domain_of": [
+        "Electrode"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -327,6 +382,68 @@
         "ucum_code": "Ohm",
         "@type": "UnitOfMeasure"
       },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subject__subject_id",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/subject_id",
+      "alias": "subject_id",
+      "owner": "Subject",
+      "domain_of": [
+        "Subject"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subject__sex",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/sex",
+      "alias": "sex",
+      "owner": "Subject",
+      "domain_of": [
+        "Subject"
+      ],
+      "range": "SubjectSex",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "subject__species",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/species",
+      "alias": "species",
+      "owner": "Subject",
+      "domain_of": [
+        "Subject"
+      ],
+      "range": "SubjectSpecies",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nWBFile__raw_ephys",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/raw_ephys",
+      "alias": "raw_ephys",
+      "owner": "NWBFile",
+      "domain_of": [
+        "NWBFile"
+      ],
+      "range": "ElectricalArray",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nWBFile__subject",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/subject",
+      "alias": "subject",
+      "owner": "NWBFile",
+      "domain_of": [
+        "NWBFile"
+      ],
+      "range": "Subject",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -402,6 +519,8 @@
       "usage_slot_name": "axis0",
       "range": "TimestampSeries",
       "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -420,6 +539,8 @@
       "usage_slot_name": "axis1",
       "range": "ElectrodeSeries",
       "required": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -447,6 +568,17 @@
   ],
   "classes": [
     {
+      "name": "Any",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Any",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "mappings": [
+        "linkml:Any"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "OneDimensionalSeries",
       "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/OneDimensionalSeries",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
@@ -469,6 +601,7 @@
         {
           "name": "values",
           "multivalued": true,
+          "range": "Any",
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -495,6 +628,8 @@
           "rank": 0,
           "range": "OneDimensionalSeries",
           "required": true,
+          "inlined": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -505,11 +640,14 @@
           "rank": 1,
           "range": "OneDimensionalSeries",
           "required": true,
+          "inlined": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
           "name": "values",
           "multivalued": true,
+          "range": "Any",
           "required": true,
           "@type": "SlotDefinition"
         }
@@ -536,10 +674,16 @@
       "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Electrode",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
       "slots": [
+        "electrode__name",
         "electrode__impedance"
       ],
       "slot_usage": {},
       "attributes": [
+        {
+          "name": "name",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
         {
           "name": "impedance",
           "range": "float",
@@ -580,13 +724,68 @@
       "slot_usage": {},
       "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/ElectricalArray",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "Subject",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Subject",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slots": [
+        "subject__subject_id",
+        "subject__sex",
+        "subject__species"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "subject_id",
+          "range": "string",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "sex",
+          "range": "SubjectSex",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "species",
+          "range": "SubjectSpecies",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Subject",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NWBFile",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/NWBFile",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slots": [
+        "nWBFile__raw_ephys",
+        "nWBFile__subject"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "raw_ephys",
+          "range": "ElectricalArray",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "subject",
+          "range": "Subject",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/NWBFile",
+      "tree_root": true,
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "hdmf_term_lists.yaml",
-  "source_file_date": "2022-12-20T12:55:52",
-  "source_file_size": 2261,
-  "generation_date": "2022-12-20T12:56:19",
+  "source_file_date": "2023-01-20T16:13:38",
+  "source_file_size": 3581,
+  "generation_date": "2023-01-20T16:13:47",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/hdmf_term_lists.context.jsonld",

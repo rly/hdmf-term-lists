@@ -1,3 +1,7 @@
+type Any
+  {
+  }
+
 type ElectricalArray
   {
     axis0: TimestampSeries!
@@ -7,6 +11,7 @@ type ElectricalArray
 
 type Electrode
   {
+    name: String
     impedance: Float
   }
 
@@ -17,11 +22,24 @@ type ElectrodeSeries
     values: [Electrode]!
   }
 
+type NWBFile
+  {
+    rawEphys: ElectricalArray
+    subject: Subject
+  }
+
 type OneDimensionalSeries
   {
     name: String!
     dataType: String
-    values: [String]!
+    values: [Any]!
+  }
+
+type Subject
+  {
+    subjectId: String
+    sex: SubjectSex
+    species: SubjectSpecies
   }
 
 type TimestampSeries
@@ -35,6 +53,6 @@ type TwoDimensionalArray
   {
     axis0: OneDimensionalSeries!
     axis1: OneDimensionalSeries!
-    values: [String]!
+    values: [Any]!
   }
 

@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://hdmf-dev.github.io/hdmf-term-lists/RegularlySampledElectricalArray/" rel="canonical"/>
+<link href="https://hdmf-dev.github.io/hdmf-term-lists/NWBFile/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: RegularlySampledElectricalArray - hdmf-term-lists</title>
+<title>Class: NWBFile - hdmf-term-lists</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-regularlysampledelectricalarray">
+<a class="md-skip" href="#class-nwbfile">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: RegularlySampledElectricalArray
+              Class: NWBFile
             
           </span>
 </div>
@@ -142,11 +142,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-    Inheritance
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -196,30 +191,18 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/hdmf-dev/hdmf-term-lists/edit/master/docs/RegularlySampledElectricalArray.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/hdmf-dev/hdmf-term-lists/edit/master/docs/NWBFile.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-regularlysampledelectricalarray">Class: RegularlySampledElectricalArray</h1>
-<p>URI: <a href="https://w3id.org/hdmf-dev/hdmf-term-lists/RegularlySampledElectricalArray">hdmf_term_lists:RegularlySampledElectricalArray</a></p>
+<h1 id="class-nwbfile">Class: NWBFile</h1>
+<p>URI: <a href="https://w3id.org/hdmf-dev/hdmf-term-lists/NWBFile">hdmf_term_lists:NWBFile</a></p>
 <div class="mermaid"> classDiagram
-    class RegularlySampledElectricalArray
-      ElectricalArray &lt;|-- RegularlySampledElectricalArray
-
-      RegularlySampledElectricalArray : axis0
-      RegularlySampledElectricalArray : axis1
-      RegularlySampledElectricalArray : values
+    class NWBFile
+      NWBFile : raw_ephys
+      NWBFile : subject
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../TwoDimensionalArray/">TwoDimensionalArray</a><ul>
-<li><a href="../ElectricalArray/">ElectricalArray</a><ul>
-<li><strong>RegularlySampledElectricalArray</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -232,22 +215,16 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../axis0/">axis0</a></td>
-<td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+<td><a href="../raw_ephys/">raw_ephys</a></td>
+<td>0..1 <br/> <a href="../ElectricalArray/">ElectricalArray</a></td>
 <td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+<td>direct</td>
 </tr>
 <tr>
-<td><a href="../values/">values</a></td>
-<td>1..* <br/> <a href="../Any/">Any</a></td>
+<td><a href="../subject/">subject</a></td>
+<td>0..1 <br/> <a href="../Subject/">Subject</a></td>
 <td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
-</tr>
-<tr>
-<td><a href="../axis1/">axis1</a></td>
-<td>1..1 <br/> <a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
-<td></td>
-<td><a href="../TwoDimensionalArray/">TwoDimensionalArray</a></td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
@@ -267,11 +244,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>hdmf_term_lists:RegularlySampledElectricalArray</td>
+<td>hdmf_term_lists:NWBFile</td>
 </tr>
 <tr>
 <td>native</td>
-<td>hdmf_term_lists:RegularlySampledElectricalArray</td>
+<td>hdmf_term_lists:NWBFile</td>
 </tr>
 </tbody>
 </table>
@@ -279,83 +256,49 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: RegularlySampledElectricalArray
+<pre><code class="language-yaml">name: NWBFile
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
-is_a: ElectricalArray
-slot_usage:
-  axis0:
-    name: axis0
-    domain_of:
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    range: RegularlySampledTimestampSeries
+attributes:
+  raw_ephys:
+    name: raw_ephys
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    range: ElectricalArray
+  subject:
+    name: subject
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    range: Subject
+tree_root: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: RegularlySampledElectricalArray
+<pre><code class="language-yaml">name: NWBFile
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
-is_a: ElectricalArray
-slot_usage:
-  axis0:
-    name: axis0
-    domain_of:
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    range: RegularlySampledTimestampSeries
 attributes:
-  axis0:
-    name: axis0
+  raw_ephys:
+    name: raw_ephys
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    rank: 0
-    alias: axis0
-    owner: RegularlySampledElectricalArray
+    rank: 1000
+    alias: raw_ephys
+    owner: NWBFile
     domain_of:
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    role: time
-    range: RegularlySampledTimestampSeries
-    required: true
-    inlined: true
-    inlined_as_list: true
-  axis1:
-    name: axis1
+    - NWBFile
+    range: ElectricalArray
+  subject:
+    name: subject
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    aliases:
-    - y
-    rank: 1
-    alias: axis1
-    owner: RegularlySampledElectricalArray
+    rank: 1000
+    alias: subject
+    owner: NWBFile
     domain_of:
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    role: electrode
-    range: ElectrodeSeries
-    required: true
-    inlined: true
-    inlined_as_list: true
-  values:
-    name: values
-    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    multivalued: true
-    alias: values
-    owner: RegularlySampledElectricalArray
-    domain_of:
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    range: float
-    required: true
+    - NWBFile
+    range: Subject
+tree_root: true
 
 </code></pre>
 </details>

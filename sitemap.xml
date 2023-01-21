@@ -2,122 +2,127 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/Any/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/ElectricalArray/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/Electrode/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/ElectrodeSeries/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/IrregularlySampledElectricalArray/</loc>
-         <lastmod>2023-01-20</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/IrregularlySampledOneDimensionalSeries/</loc>
-         <lastmod>2023-01-20</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/IrregularlySampledTimestampSeries/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/NWBFile/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/OneDimensionalSeries/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/RegularlySampledElectricalArray/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Subject/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/RegularlySampledOneDimensionalSeries/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/SubjectSex/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/RegularlySampledTimestampSeries/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/SubjectSpecies/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/TimestampSeriesMixin/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/TimestampSeries/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/TwoDimensionalArray/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/axis0/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/axis1/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/data_type/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/hdmf-term-lists/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/impedance/</loc>
-         <lastmod>2023-01-20</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/length/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/name/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/offset/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/raw_ephys/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/sampling_rate/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/sex/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/species/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/subject/</loc>
+         <lastmod>2023-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/subject_id/</loc>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/types/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/values/</loc>
-         <lastmod>2023-01-20</lastmod>
+         <lastmod>2023-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

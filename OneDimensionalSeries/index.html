@@ -208,17 +208,19 @@
 <p>URI: <a href="https://w3id.org/hdmf-dev/hdmf-term-lists/OneDimensionalSeries">hdmf_term_lists:OneDimensionalSeries</a></p>
 <div class="mermaid"> classDiagram
     class OneDimensionalSeries
-      OneDimensionalSeries &lt;|-- IrregularlySampledOneDimensionalSeries
-      OneDimensionalSeries &lt;|-- RegularlySampledOneDimensionalSeries
+      OneDimensionalSeries &lt;|-- TimestampSeries
+      OneDimensionalSeries &lt;|-- ElectrodeSeries
 
+      OneDimensionalSeries : data_type
       OneDimensionalSeries : name
+      OneDimensionalSeries : values
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>OneDimensionalSeries</strong><ul>
-<li><a href="../IrregularlySampledOneDimensionalSeries/">IrregularlySampledOneDimensionalSeries</a></li>
-<li><a href="../RegularlySampledOneDimensionalSeries/">RegularlySampledOneDimensionalSeries</a></li>
+<li><a href="../TimestampSeries/">TimestampSeries</a></li>
+<li><a href="../ElectrodeSeries/">ElectrodeSeries</a></li>
 </ul>
 </li>
 </ul>
@@ -235,6 +237,18 @@
 <tbody>
 <tr>
 <td><a href="../name/">name</a></td>
+<td>0..1 <br/> NONE</td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_type/">data_type</a></td>
+<td>0..1 <br/> NONE</td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../values/">values</a></td>
 <td>0..1 <br/> NONE</td>
 <td></td>
 <td>direct</td>
@@ -303,6 +317,17 @@ attributes:
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
     rank: 1000
     key: true
+  data_type:
+    name: data_type
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+  values:
+    name: values
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    multivalued: true
+    range: Any
+    required: true
 
 </code></pre>
 </details>
@@ -323,6 +348,27 @@ attributes:
     - OneDimensionalSeries
     - Electrode
     range: string
+  data_type:
+    name: data_type
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    alias: data_type
+    owner: OneDimensionalSeries
+    domain_of:
+    - OneDimensionalSeries
+    range: string
+  values:
+    name: values
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    multivalued: true
+    alias: values
+    owner: OneDimensionalSeries
+    domain_of:
+    - OneDimensionalSeries
+    - TwoDimensionalArray
+    range: Any
+    required: true
 
 </code></pre>
 </details>

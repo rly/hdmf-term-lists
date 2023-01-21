@@ -208,8 +208,9 @@
 <p>URI: <a href="https://w3id.org/hdmf-dev/hdmf-term-lists/ElectrodeSeries">hdmf_term_lists:ElectrodeSeries</a></p>
 <div class="mermaid"> classDiagram
     class ElectrodeSeries
-      IrregularlySampledOneDimensionalSeries &lt;|-- ElectrodeSeries
+      OneDimensionalSeries &lt;|-- ElectrodeSeries
 
+      ElectrodeSeries : data_type
       ElectrodeSeries : name
       ElectrodeSeries : values
 
@@ -217,10 +218,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../OneDimensionalSeries/">OneDimensionalSeries</a><ul>
-<li><a href="../IrregularlySampledOneDimensionalSeries/">IrregularlySampledOneDimensionalSeries</a><ul>
 <li><strong>ElectrodeSeries</strong></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -236,16 +234,22 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
+<td><a href="../values/">values</a></td>
 <td>0..1 <br/> NONE</td>
 <td></td>
 <td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 </tr>
 <tr>
-<td><a href="../values/">values</a></td>
-<td>1..* <br/> <a href="../Any/">Any</a></td>
+<td><a href="../data_type/">data_type</a></td>
+<td>0..1 <br/> NONE</td>
 <td></td>
-<td><a href="../IrregularlySampledOneDimensionalSeries/">IrregularlySampledOneDimensionalSeries</a></td>
+<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> NONE</td>
+<td></td>
+<td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 </tr>
 </tbody>
 </table>
@@ -262,18 +266,6 @@
 <tbody>
 <tr>
 <td><a href="../ElectricalArray/">ElectricalArray</a></td>
-<td><a href="../axis1/">axis1</a></td>
-<td>range</td>
-<td><a href="./">ElectrodeSeries</a></td>
-</tr>
-<tr>
-<td><a href="../IrregularlySampledElectricalArray/">IrregularlySampledElectricalArray</a></td>
-<td><a href="../axis1/">axis1</a></td>
-<td>range</td>
-<td><a href="./">ElectrodeSeries</a></td>
-</tr>
-<tr>
-<td><a href="../RegularlySampledElectricalArray/">RegularlySampledElectricalArray</a></td>
 <td><a href="../axis1/">axis1</a></td>
 <td>range</td>
 <td><a href="./">ElectrodeSeries</a></td>
@@ -311,19 +303,15 @@
 <pre><code class="language-yaml">name: ElectrodeSeries
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
-is_a: IrregularlySampledOneDimensionalSeries
+is_a: OneDimensionalSeries
 slot_usage:
   values:
     name: values
     domain_of:
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
+    - OneDimensionalSeries
     - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
+    - OneDimensionalSeries
     - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
     range: Electrode
 
 </code></pre>
@@ -333,38 +321,17 @@ slot_usage:
 <pre><code class="language-yaml">name: ElectrodeSeries
 from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
 rank: 1000
-is_a: IrregularlySampledOneDimensionalSeries
+is_a: OneDimensionalSeries
 slot_usage:
   values:
     name: values
     domain_of:
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
+    - OneDimensionalSeries
     - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
+    - OneDimensionalSeries
     - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
     range: Electrode
 attributes:
-  values:
-    name: values
-    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
-    multivalued: true
-    alias: values
-    owner: ElectrodeSeries
-    domain_of:
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    - IrregularlySampledOneDimensionalSeries
-    - RegularlySampledOneDimensionalSeries
-    - TwoDimensionalArray
-    - IrregularlySampledElectricalArray
-    range: Electrode
-    required: true
   name:
     name: name
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
@@ -376,6 +343,29 @@ attributes:
     - OneDimensionalSeries
     - Electrode
     range: string
+  data_type:
+    name: data_type
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    alias: data_type
+    owner: ElectrodeSeries
+    domain_of:
+    - OneDimensionalSeries
+    range: string
+  values:
+    name: values
+    from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
+    rank: 1000
+    multivalued: true
+    alias: values
+    owner: ElectrodeSeries
+    domain_of:
+    - OneDimensionalSeries
+    - TwoDimensionalArray
+    - OneDimensionalSeries
+    - TwoDimensionalArray
+    range: Electrode
+    required: true
 
 </code></pre>
 </details>

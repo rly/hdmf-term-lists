@@ -1,7 +1,7 @@
 time:
   name: time
   starting_time: 0.0
-  sampling_rate: 0.1
+  sampling_rate: 10
   length: 2
 electrode:
   name: electrode

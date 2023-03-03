@@ -1,0 +1,52 @@
+type ElectricalArray
+  {
+    time: TimestampSeries
+    electrode: ElectrodeSeries
+    values: Float
+  }
+
+type Electrode
+  {
+    name: String
+    impedance: Float
+  }
+
+type ElectrodeSeries
+  {
+    name: String!
+    values: [Electrode]!
+  }
+
+type IrregularlySampledElectricalArray
+  {
+    electrode: ElectrodeSeries
+    values: Float
+    time: IrregularlySampledTimestampSeries
+  }
+
+type IrregularlySampledTimestampSeries
+  {
+    name: String!
+    values: [Float]!
+  }
+
+type RegularlySampledElectricalArray
+  {
+    electrode: ElectrodeSeries
+    values: Float
+    time: RegularlySampledTimestampSeries
+  }
+
+type RegularlySampledTimestampSeries
+  {
+    name: String!
+    samplingRate: Float!
+    startingTime: Float!
+    length: Integer
+    values: [Float]
+  }
+
+type TimestampSeries
+  {
+  }
+

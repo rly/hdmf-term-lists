@@ -1,0 +1,129 @@
+id: https://w3id.org/hdmf-dev/hdmf-term-lists
+name: hdmf-term-lists
+title: hdmf-term-lists
+description: |-
+  Example LinkML schema to demonstrate storage of term lists.
+license: MIT
+see_also:
+  - https://hdmf-dev.github.io/hdmf-term-lists
+
+prefixes:
+  hdmf_term_lists: https://w3id.org/hdmf-dev/hdmf-term-lists/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  example: https://example.org/
+  RO: http://purl.obolibrary.org/obo/RO_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  obo: http://purl.obolibrary.org/obo/
+
+  # can you specify versions? TODO
+
+default_curi_maps:
+  - semweb_context  # will load a bunch of common semantic web urls including rdfs
+  # see https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.yaml
+default_prefix: hdmf_term_lists
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  # linkml:OneDimensionalSeries will be defined in LinkML #143
+
+  TimestampSeries:
+    conforms_to: linkml:OneDimensionalSeries
+    # TODO abstract from children
+
+  IrregularlySampledTimestampSeries:
+    is_a: TimestampSeries
+    conforms_to: linkml:OneDimensionalSeries
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        conforms_to: linkml:OneDimensionalSeries.name
+      values:
+        range: float
+        multivalued: true
+        required: true
+        conforms_to: linkml:OneDimensionalSeries.values
+        unit:
+          ucum_code: s
+
+  RegularlySampledTimestampSeries:
+    is_a: TimestampSeries
+    conforms_to: linkml:OneDimensionalSeries
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        conforms_to: linkml:OneDimensionalSeries.name
+      sampling_rate:
+        range: float
+        required: true
+      starting_time:
+        range: float
+        required: true
+      length:  # must be defined when it cannot be inferred
+        range: integer
+      values:
+        range: float
+        multivalued: true
+        equals_expression: "{array_index} * {sampling_rate} + {offset}"  # TODO define array_index
+        conforms_to: linkml:OneDimensionalSeries.values
+        unit:
+          ucum_code: s
+
+  Electrode:
+    attributes:
+      name:
+        range: string
+      impedance:
+        range: float
+        unit:
+          ucum_code: Ohm
+
+  ElectrodeSeries:
+    conforms_to: linkml:OneDimensionalSeries
+    attributes:
+      name:  # the row label
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        conforms_to: linkml:OneDimensionalSeries.name
+      values:
+        range: Electrode
+        multivalued: true
+        required: true
+        inlined: true  # not needed if value is not an object
+        inlined_as_list: true
+        conforms_to: linkml:OneDimensionalSeries.values
+
+  ElectricalArray:
+    tree_root: true
+    conforms_to: linkml:TwoDimensionalArray
+    attributes:
+      time:
+        range: TimestampSeries  # abstract - could be IrregularlySampled... or RegularlySampled...
+        conforms_to: linkml:TwoDimensionalArray.axis0
+      electrode:
+        range: ElectrodeSeries
+        conforms_to: linkml:TwoDimensionalArray.axis1
+        inlined: true  # not needed if value is not an object
+      values:
+        range: float
+        multivalued: true
+        unit:
+          ucum_code: V
+        conforms_to: linkml:TwoDimensionalArray.values
+
+  IrregularlySampledElectricalArray:
+    is_a: ElectricalArray
+    slot_usage:
+      time:
+        range: IrregularlySampledTimestampSeries
+
+  RegularlySampledElectricalArray:
+    is_a: ElectricalArray
+    slot_usage:
+      time:
+        range: RegularlySampledTimestampSeries

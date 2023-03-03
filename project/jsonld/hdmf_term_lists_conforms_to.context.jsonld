@@ -1,0 +1,45 @@
+{
+   "_comments": "Auto generated from hdmf_term_lists_conforms_to.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2023-03-03T15:32:37\n    Schema: hdmf-term-lists\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/hdmf-dev/hdmf-term-lists\n    description: Example LinkML schema to demonstrate storage of term lists.\n    license: MIT\n    ",
+   "@context": {
+      "NCBITaxon": {
+         "@id": "http://purl.obolibrary.org/obo/NCBITaxon_",
+         "@prefix": true
+      },
+      "PATO": {
+         "@id": "http://purl.obolibrary.org/obo/PATO_",
+         "@prefix": true
+      },
+      "RO": {
+         "@id": "http://purl.obolibrary.org/obo/RO_",
+         "@prefix": true
+      },
+      "biolink": "https://w3id.org/biolink/",
+      "example": "https://example.org/",
+      "hdmf_term_lists": "https://w3id.org/hdmf-dev/hdmf-term-lists/",
+      "linkml": "https://w3id.org/linkml/",
+      "obo": "http://purl.obolibrary.org/obo/",
+      "schema": "http://schema.org/",
+      "@vocab": "https://w3id.org/hdmf-dev/hdmf-term-lists/",
+      "electrode": {
+         "@type": "@id"
+      },
+      "time": {
+         "@type": "@id"
+      },
+      "values": {
+         "@type": "xsd:float"
+      },
+      "impedance": {
+         "@type": "xsd:float"
+      },
+      "length": {
+         "@type": "xsd:integer"
+      },
+      "sampling_rate": {
+         "@type": "xsd:float"
+      },
+      "starting_time": {
+         "@type": "xsd:float"
+      }
+   }
+}

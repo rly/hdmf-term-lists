@@ -1,9 +1,9 @@
-axis0:
+time:
   name: time
   values:
     - 0
     - 0.1
-axis1:
+electrode:
   name: electrode
   values:
     - name: elec0

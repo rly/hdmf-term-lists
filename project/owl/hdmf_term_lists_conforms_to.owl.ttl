@@ -1,0 +1,191 @@
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hdmf_term_lists: <https://w3id.org/hdmf-dev/hdmf-term-lists/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/hdmf-dev/hdmf-term-lists> a owl:Ontology ;
+    rdfs:label "hdmf-term-lists" ;
+    IAO:0000700 hdmf_term_lists:ElectricalArray,
+        hdmf_term_lists:Electrode,
+        hdmf_term_lists:ElectrodeSeries,
+        hdmf_term_lists:TimestampSeries ;
+    dcterms:license "MIT" ;
+    dcterms:title "hdmf-term-lists" ;
+    rdfs:seeAlso "https://hdmf-dev.github.io/hdmf-term-lists" ;
+    linkml:generation_date "2023-03-03T15:32:42" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "hdmf_term_lists_conforms_to.yaml" ;
+    linkml:source_file_date "2023-03-03T15:31:32" ;
+    linkml:source_file_size 3659 .
+
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+hdmf_term_lists:IrregularlySampledElectricalArray a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "IrregularlySampledElectricalArray" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:IrregularlySampledTimestampSeries ;
+            owl:onProperty hdmf_term_lists:time ],
+        hdmf_term_lists:ElectricalArray .
+
+hdmf_term_lists:RegularlySampledElectricalArray a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "RegularlySampledElectricalArray" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:RegularlySampledTimestampSeries ;
+            owl:onProperty hdmf_term_lists:time ],
+        hdmf_term_lists:ElectricalArray .
+
+hdmf_term_lists:electrode a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "electrode" ;
+    dcterms:conformsTo "linkml:TwoDimensionalArray.axis1" ;
+    rdfs:range hdmf_term_lists:ElectrodeSeries .
+
+hdmf_term_lists:impedance a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "impedance" ;
+    rdfs:range linkml:Float .
+
+hdmf_term_lists:length a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "length" ;
+    rdfs:range linkml:Integer .
+
+hdmf_term_lists:sampling_rate a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sampling_rate" ;
+    rdfs:range linkml:Float .
+
+hdmf_term_lists:starting_time a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "starting_time" ;
+    rdfs:range linkml:Float .
+
+hdmf_term_lists:IrregularlySampledTimestampSeries a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "IrregularlySampledTimestampSeries" ;
+    dcterms:conformsTo "linkml:OneDimensionalSeries" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:Float ;
+                        owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
+                        owl:onProperty hdmf_term_lists:values ;
+                        owl:someValuesFrom linkml:Float ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:name ;
+            owl:qualifiedCardinality 1 ],
+        hdmf_term_lists:TimestampSeries .
+
+hdmf_term_lists:RegularlySampledTimestampSeries a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "RegularlySampledTimestampSeries" ;
+    dcterms:conformsTo "linkml:OneDimensionalSeries" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Integer ;
+            owl:onProperty hdmf_term_lists:length ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty hdmf_term_lists:values ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Float ;
+            owl:onProperty hdmf_term_lists:starting_time ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Float ;
+            owl:onProperty hdmf_term_lists:sampling_rate ;
+            owl:qualifiedCardinality 1 ],
+        hdmf_term_lists:TimestampSeries .
+
+hdmf_term_lists:ElectricalArray a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ElectricalArray" ;
+    dcterms:conformsTo "linkml:TwoDimensionalArray" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:ElectrodeSeries ;
+            owl:onProperty hdmf_term_lists:electrode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Float ;
+            owl:onProperty hdmf_term_lists:values ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass hdmf_term_lists:TimestampSeries ;
+            owl:onProperty hdmf_term_lists:time ] .
+
+hdmf_term_lists:Electrode a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Electrode" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Float ;
+            owl:onProperty hdmf_term_lists:impedance ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:name ] .
+
+hdmf_term_lists:ElectrodeSeries a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ElectrodeSeries" ;
+    dcterms:conformsTo "linkml:OneDimensionalSeries" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty hdmf_term_lists:name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom hdmf_term_lists:Electrode ;
+                        owl:onProperty hdmf_term_lists:values ] [ a owl:Restriction ;
+                        owl:onProperty hdmf_term_lists:values ;
+                        owl:someValuesFrom hdmf_term_lists:Electrode ] ) ] .
+
+hdmf_term_lists:name a owl:ObjectProperty,
+        linkml:SlotDefinition .
+
+hdmf_term_lists:time a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "time" ;
+    dcterms:conformsTo "linkml:TwoDimensionalArray.axis0" ;
+    rdfs:domain hdmf_term_lists:IrregularlySampledElectricalArray,
+        hdmf_term_lists:RegularlySampledElectricalArray ;
+    rdfs:range hdmf_term_lists:IrregularlySampledTimestampSeries,
+        hdmf_term_lists:RegularlySampledTimestampSeries,
+        hdmf_term_lists:TimestampSeries ;
+    rdfs:subPropertyOf hdmf_term_lists:time .
+
+hdmf_term_lists:TimestampSeries a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "TimestampSeries" ;
+    dcterms:conformsTo "linkml:OneDimensionalSeries" .
+
+hdmf_term_lists:values a owl:ObjectProperty,
+        linkml:SlotDefinition .
+
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" .
+
+

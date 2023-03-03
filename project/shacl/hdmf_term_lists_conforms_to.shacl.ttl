@@ -1,0 +1,120 @@
+@prefix hdmf_term_lists: <https://w3id.org/hdmf-dev/hdmf-term-lists/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hdmf_term_lists:ElectricalArray a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:class hdmf_term_lists:ElectrodeSeries ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:electrode ],
+        [ sh:class hdmf_term_lists:TimestampSeries ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:time ] ;
+    sh:targetClass hdmf_term_lists:ElectricalArray .
+
+hdmf_term_lists:IrregularlySampledElectricalArray a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:class hdmf_term_lists:IrregularlySampledTimestampSeries ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:time ],
+        [ sh:class hdmf_term_lists:ElectrodeSeries ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:electrode ] ;
+    sh:targetClass hdmf_term_lists:IrregularlySampledElectricalArray .
+
+hdmf_term_lists:RegularlySampledElectricalArray a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hdmf_term_lists:RegularlySampledTimestampSeries ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:time ],
+        [ sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:class hdmf_term_lists:ElectrodeSeries ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:electrode ] ;
+    sh:targetClass hdmf_term_lists:RegularlySampledElectricalArray .
+
+hdmf_term_lists:Electrode a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:impedance ] ;
+    sh:targetClass hdmf_term_lists:Electrode .
+
+hdmf_term_lists:IrregularlySampledTimestampSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:values ] ;
+    sh:targetClass hdmf_term_lists:IrregularlySampledTimestampSeries .
+
+hdmf_term_lists:RegularlySampledTimestampSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:sampling_rate ],
+        [ sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hdmf_term_lists:length ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ],
+        [ sh:order 4 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path hdmf_term_lists:starting_time ] ;
+    sh:targetClass hdmf_term_lists:RegularlySampledTimestampSeries .
+
+hdmf_term_lists:TimestampSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass hdmf_term_lists:TimestampSeries .
+
+hdmf_term_lists:ElectrodeSeries a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hdmf_term_lists:Electrode ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hdmf_term_lists:values ],
+        [ sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hdmf_term_lists:name ] ;
+    sh:targetClass hdmf_term_lists:ElectrodeSeries .
+

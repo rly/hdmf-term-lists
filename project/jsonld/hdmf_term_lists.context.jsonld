@@ -1,5 +1,5 @@
 {
-   "_comments": "Auto generated from hdmf_term_lists.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2023-01-20T16:13:47\n    Schema: hdmf-term-lists\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/hdmf-dev/hdmf-term-lists\n    description: Example LinkML schema to demonstrate storage of term lists.\n    license: MIT\n    ",
+   "_comments": "Auto generated from hdmf_term_lists.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2023-03-03T15:32:07\n    Schema: hdmf-term-lists\n    metamodel version: 1.7.0\n    model version: None\n    \n    id: https://w3id.org/hdmf-dev/hdmf-term-lists\n    description: Example LinkML schema to demonstrate storage of term lists.\n    license: MIT\n    ",
    "@context": {
       "NCBITaxon": {
          "@id": "http://purl.obolibrary.org/obo/NCBITaxon_",

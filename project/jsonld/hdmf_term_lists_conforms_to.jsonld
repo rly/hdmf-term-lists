@@ -274,136 +274,111 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "SubjectSex",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSex",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "permissible_values": [
-        {
-          "text": "MALE"
-        },
-        {
-          "text": "FEMALE"
-        }
-      ]
-    },
-    {
-      "name": "SubjectSpecies",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/SubjectSpecies",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "permissible_values": [
-        {
-          "text": "HOMO_SAPIENS",
-          "meaning": "NCBITaxon:9606",
-          "aliases": [
-            "human"
-          ]
-        },
-        {
-          "text": "MUS_MUSCULUS",
-          "meaning": "NCBITaxon:10090",
-          "aliases": [
-            "mouse",
-            "house mouse"
-          ]
-        }
-      ]
-    }
-  ],
   "slots": [
     {
-      "name": "oneDimensionalSeries__name",
+      "name": "irregularlySampledTimestampSeries__name",
+      "conforms_to": "linkml:OneDimensionalSeries.name",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
       "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/name",
       "key": true,
       "alias": "name",
-      "owner": "OneDimensionalSeries",
+      "owner": "IrregularlySampledTimestampSeries",
       "domain_of": [
-        "OneDimensionalSeries"
+        "IrregularlySampledTimestampSeries"
       ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "oneDimensionalSeries__data_type",
+      "name": "irregularlySampledTimestampSeries__values",
+      "conforms_to": "linkml:OneDimensionalSeries.values",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/data_type",
-      "alias": "data_type",
-      "owner": "OneDimensionalSeries",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/values",
+      "multivalued": true,
+      "alias": "values",
+      "owner": "IrregularlySampledTimestampSeries",
       "domain_of": [
-        "OneDimensionalSeries"
+        "IrregularlySampledTimestampSeries"
+      ],
+      "range": "float",
+      "required": true,
+      "unit": {
+        "ucum_code": "s",
+        "@type": "UnitOfMeasure"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "regularlySampledTimestampSeries__name",
+      "conforms_to": "linkml:OneDimensionalSeries.name",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/name",
+      "key": true,
+      "alias": "name",
+      "owner": "RegularlySampledTimestampSeries",
+      "domain_of": [
+        "RegularlySampledTimestampSeries"
       ],
       "range": "string",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "oneDimensionalSeries__values",
+      "name": "regularlySampledTimestampSeries__sampling_rate",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/sampling_rate",
+      "alias": "sampling_rate",
+      "owner": "RegularlySampledTimestampSeries",
+      "domain_of": [
+        "RegularlySampledTimestampSeries"
+      ],
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "regularlySampledTimestampSeries__starting_time",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/starting_time",
+      "alias": "starting_time",
+      "owner": "RegularlySampledTimestampSeries",
+      "domain_of": [
+        "RegularlySampledTimestampSeries"
+      ],
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "regularlySampledTimestampSeries__length",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/length",
+      "alias": "length",
+      "owner": "RegularlySampledTimestampSeries",
+      "domain_of": [
+        "RegularlySampledTimestampSeries"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "regularlySampledTimestampSeries__values",
+      "conforms_to": "linkml:OneDimensionalSeries.values",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
       "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/values",
       "multivalued": true,
       "alias": "values",
-      "owner": "OneDimensionalSeries",
+      "owner": "RegularlySampledTimestampSeries",
       "domain_of": [
-        "OneDimensionalSeries"
+        "RegularlySampledTimestampSeries"
       ],
-      "range": "Any",
-      "required": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "twoDimensionalArray__axis0",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "aliases": [
-        "x"
-      ],
-      "rank": 0,
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/axis0",
-      "alias": "axis0",
-      "owner": "TwoDimensionalArray",
-      "domain_of": [
-        "TwoDimensionalArray"
-      ],
-      "range": "OneDimensionalSeries",
-      "required": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "twoDimensionalArray__axis1",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "aliases": [
-        "y"
-      ],
-      "rank": 1,
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/axis1",
-      "alias": "axis1",
-      "owner": "TwoDimensionalArray",
-      "domain_of": [
-        "TwoDimensionalArray"
-      ],
-      "range": "OneDimensionalSeries",
-      "required": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "twoDimensionalArray__values",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/values",
-      "multivalued": true,
-      "alias": "values",
-      "owner": "TwoDimensionalArray",
-      "domain_of": [
-        "TwoDimensionalArray"
-      ],
-      "range": "Any",
-      "required": true,
-      "inlined": true,
+      "range": "float",
+      "unit": {
+        "ucum_code": "s",
+        "@type": "UnitOfMeasure"
+      },
+      "equals_expression": "{array_index} * {sampling_rate} + {offset}",
       "@type": "SlotDefinition"
     },
     {
@@ -435,110 +410,24 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "subject__subject_id",
+      "name": "electrodeSeries__name",
+      "conforms_to": "linkml:OneDimensionalSeries.name",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/subject_id",
-      "alias": "subject_id",
-      "owner": "Subject",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/name",
+      "key": true,
+      "alias": "name",
+      "owner": "ElectrodeSeries",
       "domain_of": [
-        "Subject"
+        "ElectrodeSeries"
       ],
       "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "subject__sex",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/sex",
-      "alias": "sex",
-      "owner": "Subject",
-      "domain_of": [
-        "Subject"
-      ],
-      "range": "SubjectSex",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "subject__species",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/species",
-      "alias": "species",
-      "owner": "Subject",
-      "domain_of": [
-        "Subject"
-      ],
-      "range": "SubjectSpecies",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "nWBFile__raw_ephys",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/raw_ephys",
-      "alias": "raw_ephys",
-      "owner": "NWBFile",
-      "domain_of": [
-        "NWBFile"
-      ],
-      "range": "ElectricalArray",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "nWBFile__subject",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/subject",
-      "alias": "subject",
-      "owner": "NWBFile",
-      "domain_of": [
-        "NWBFile"
-      ],
-      "range": "Subject",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "TimestampSeries_data_type",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "oneDimensionalSeries__data_type",
-      "domain": "TimestampSeries",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/data_type",
-      "alias": "data_type",
-      "owner": "TimestampSeries",
-      "domain_of": [
-        "TimestampSeries"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "data_type",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "TimestampSeries_values",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "oneDimensionalSeries__values",
-      "domain": "TimestampSeries",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/values",
-      "multivalued": true,
-      "alias": "values",
-      "owner": "TimestampSeries",
-      "domain_of": [
-        "TimestampSeries"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "values",
-      "range": "float",
       "required": true,
-      "unit": {
-        "ucum_code": "s",
-        "@type": "UnitOfMeasure"
-      },
       "@type": "SlotDefinition"
     },
     {
-      "name": "ElectrodeSeries_values",
+      "name": "electrodeSeries__values",
+      "conforms_to": "linkml:OneDimensionalSeries.values",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "oneDimensionalSeries__values",
-      "domain": "ElectrodeSeries",
       "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/values",
       "multivalued": true,
       "alias": "values",
@@ -546,177 +435,184 @@
       "domain_of": [
         "ElectrodeSeries"
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "values",
       "range": "Electrode",
       "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "ElectricalArray_axis0",
+      "name": "electricalArray__time",
+      "conforms_to": "linkml:TwoDimensionalArray.axis0",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "twoDimensionalArray__axis0",
-      "domain": "ElectricalArray",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/axis0",
-      "alias": "axis0",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/time",
+      "alias": "time",
       "owner": "ElectricalArray",
       "domain_of": [
         "ElectricalArray"
       ],
-      "role": "time",
-      "is_usage_slot": true,
-      "usage_slot_name": "axis0",
       "range": "TimestampSeries",
-      "required": true,
       "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "ElectricalArray_axis1",
+      "name": "electricalArray__electrode",
+      "conforms_to": "linkml:TwoDimensionalArray.axis1",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "twoDimensionalArray__axis1",
-      "domain": "ElectricalArray",
-      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/axis1",
-      "alias": "axis1",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/electrode",
+      "alias": "electrode",
       "owner": "ElectricalArray",
       "domain_of": [
         "ElectricalArray"
       ],
-      "role": "electrode",
-      "is_usage_slot": true,
-      "usage_slot_name": "axis1",
       "range": "ElectrodeSeries",
-      "required": true,
-      "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "ElectricalArray_values",
+      "name": "electricalArray__values",
+      "conforms_to": "linkml:TwoDimensionalArray.values",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "twoDimensionalArray__values",
-      "domain": "ElectricalArray",
       "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/values",
-      "multivalued": true,
       "alias": "values",
       "owner": "ElectricalArray",
       "domain_of": [
         "ElectricalArray"
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "values",
       "range": "float",
-      "required": true,
       "unit": {
         "ucum_code": "V",
         "@type": "UnitOfMeasure"
       },
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "IrregularlySampledElectricalArray_time",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "is_a": "electricalArray__time",
+      "domain": "IrregularlySampledElectricalArray",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/time",
+      "alias": "time",
+      "owner": "IrregularlySampledElectricalArray",
+      "domain_of": [
+        "IrregularlySampledElectricalArray"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "time",
+      "range": "IrregularlySampledTimestampSeries",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "RegularlySampledElectricalArray_time",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "is_a": "electricalArray__time",
+      "domain": "RegularlySampledElectricalArray",
+      "slot_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/time",
+      "alias": "time",
+      "owner": "RegularlySampledElectricalArray",
+      "domain_of": [
+        "RegularlySampledElectricalArray"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "time",
+      "range": "RegularlySampledTimestampSeries",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "Any",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Any",
+      "name": "TimestampSeries",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/TimestampSeries",
+      "conforms_to": "linkml:OneDimensionalSeries",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "mappings": [
-        "linkml:Any"
-      ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/linkml/Any",
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/TimestampSeries",
       "@type": "ClassDefinition"
     },
     {
-      "name": "OneDimensionalSeries",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/OneDimensionalSeries",
+      "name": "IrregularlySampledTimestampSeries",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/IrregularlySampledTimestampSeries",
+      "conforms_to": "linkml:OneDimensionalSeries",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "is_a": "TimestampSeries",
       "slots": [
-        "oneDimensionalSeries__name",
-        "oneDimensionalSeries__data_type",
-        "oneDimensionalSeries__values"
+        "irregularlySampledTimestampSeries__name",
+        "irregularlySampledTimestampSeries__values"
       ],
       "slot_usage": {},
       "attributes": [
         {
           "name": "name",
+          "conforms_to": "linkml:OneDimensionalSeries.name",
           "key": true,
           "@type": "SlotDefinition"
         },
         {
-          "name": "data_type",
-          "@type": "SlotDefinition"
-        },
-        {
           "name": "values",
+          "conforms_to": "linkml:OneDimensionalSeries.values",
           "multivalued": true,
-          "range": "Any",
+          "range": "float",
           "required": true,
+          "unit": {
+            "ucum_code": "s",
+            "@type": "UnitOfMeasure"
+          },
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/OneDimensionalSeries",
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/IrregularlySampledTimestampSeries",
       "@type": "ClassDefinition"
     },
     {
-      "name": "TwoDimensionalArray",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/TwoDimensionalArray",
+      "name": "RegularlySampledTimestampSeries",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/RegularlySampledTimestampSeries",
+      "conforms_to": "linkml:OneDimensionalSeries",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "is_a": "TimestampSeries",
       "slots": [
-        "twoDimensionalArray__axis0",
-        "twoDimensionalArray__axis1",
-        "twoDimensionalArray__values"
+        "regularlySampledTimestampSeries__name",
+        "regularlySampledTimestampSeries__sampling_rate",
+        "regularlySampledTimestampSeries__starting_time",
+        "regularlySampledTimestampSeries__length",
+        "regularlySampledTimestampSeries__values"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "axis0",
-          "aliases": [
-            "x"
-          ],
-          "rank": 0,
-          "range": "OneDimensionalSeries",
-          "required": true,
-          "inlined": true,
-          "inlined_as_list": true,
+          "name": "name",
+          "conforms_to": "linkml:OneDimensionalSeries.name",
+          "key": true,
           "@type": "SlotDefinition"
         },
         {
-          "name": "axis1",
-          "aliases": [
-            "y"
-          ],
-          "rank": 1,
-          "range": "OneDimensionalSeries",
+          "name": "sampling_rate",
+          "range": "float",
           "required": true,
-          "inlined": true,
-          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "starting_time",
+          "range": "float",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "length",
+          "range": "integer",
           "@type": "SlotDefinition"
         },
         {
           "name": "values",
+          "conforms_to": "linkml:OneDimensionalSeries.values",
           "multivalued": true,
-          "range": "Any",
-          "required": true,
+          "range": "float",
+          "unit": {
+            "ucum_code": "s",
+            "@type": "UnitOfMeasure"
+          },
+          "equals_expression": "{array_index} * {sampling_rate} + {offset}",
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/TwoDimensionalArray",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "TimestampSeries",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/TimestampSeries",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "OneDimensionalSeries",
-      "slots": [
-        "oneDimensionalSeries__name",
-        "TimestampSeries_data_type",
-        "TimestampSeries_values"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/TimestampSeries",
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/RegularlySampledTimestampSeries",
       "@type": "ClassDefinition"
     },
     {
@@ -750,95 +646,108 @@
     {
       "name": "ElectrodeSeries",
       "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/ElectrodeSeries",
+      "conforms_to": "linkml:OneDimensionalSeries",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "OneDimensionalSeries",
       "slots": [
-        "oneDimensionalSeries__name",
-        "oneDimensionalSeries__data_type",
-        "ElectrodeSeries_values"
+        "electrodeSeries__name",
+        "electrodeSeries__values"
       ],
       "slot_usage": {},
+      "attributes": [
+        {
+          "name": "name",
+          "conforms_to": "linkml:OneDimensionalSeries.name",
+          "key": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "values",
+          "conforms_to": "linkml:OneDimensionalSeries.values",
+          "multivalued": true,
+          "range": "Electrode",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
       "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/ElectrodeSeries",
       "@type": "ClassDefinition"
     },
     {
       "name": "ElectricalArray",
       "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/ElectricalArray",
+      "conforms_to": "linkml:TwoDimensionalArray",
       "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "is_a": "TwoDimensionalArray",
       "slots": [
-        "ElectricalArray_axis0",
-        "ElectricalArray_axis1",
-        "ElectricalArray_values"
+        "electricalArray__time",
+        "electricalArray__electrode",
+        "electricalArray__values"
       ],
       "slot_usage": {},
+      "attributes": [
+        {
+          "name": "time",
+          "conforms_to": "linkml:TwoDimensionalArray.axis0",
+          "range": "TimestampSeries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "electrode",
+          "conforms_to": "linkml:TwoDimensionalArray.axis1",
+          "range": "ElectrodeSeries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "values",
+          "conforms_to": "linkml:TwoDimensionalArray.values",
+          "range": "float",
+          "unit": {
+            "ucum_code": "V",
+            "@type": "UnitOfMeasure"
+          },
+          "@type": "SlotDefinition"
+        }
+      ],
       "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/ElectricalArray",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Subject",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Subject",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slots": [
-        "subject__subject_id",
-        "subject__sex",
-        "subject__species"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "subject_id",
-          "range": "string",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "sex",
-          "range": "SubjectSex",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "species",
-          "range": "SubjectSpecies",
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/Subject",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "NWBFile",
-      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/NWBFile",
-      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
-      "slots": [
-        "nWBFile__raw_ephys",
-        "nWBFile__subject"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "raw_ephys",
-          "range": "ElectricalArray",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "subject",
-          "range": "Subject",
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/NWBFile",
       "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "IrregularlySampledElectricalArray",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/IrregularlySampledElectricalArray",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "is_a": "ElectricalArray",
+      "slots": [
+        "electricalArray__electrode",
+        "electricalArray__values",
+        "IrregularlySampledElectricalArray_time"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/IrregularlySampledElectricalArray",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RegularlySampledElectricalArray",
+      "definition_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/RegularlySampledElectricalArray",
+      "from_schema": "https://w3id.org/hdmf-dev/hdmf-term-lists",
+      "is_a": "ElectricalArray",
+      "slots": [
+        "electricalArray__electrode",
+        "electricalArray__values",
+        "RegularlySampledElectricalArray_time"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hdmf-dev/hdmf-term-lists/RegularlySampledElectricalArray",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
-  "source_file": "hdmf_term_lists.yaml",
-  "source_file_date": "2023-01-20T16:31:57",
-  "source_file_size": 3262,
-  "generation_date": "2023-03-03T15:32:08",
+  "source_file": "hdmf_term_lists_conforms_to.yaml",
+  "source_file_date": "2023-03-03T15:31:32",
+  "source_file_size": 3659,
+  "generation_date": "2023-03-03T15:32:37",
   "@type": "SchemaDefinition",
   "@context": [
-    "project/jsonld/hdmf_term_lists.context.jsonld",
+    "project/jsonld/hdmf_term_lists_conforms_to.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     {
       "@base": "https://w3id.org/hdmf-dev/hdmf-term-lists/"

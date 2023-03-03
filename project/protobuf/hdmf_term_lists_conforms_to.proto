@@ -1,0 +1,41 @@
+message ElectricalArray
+ {
+  timestampSeries time = 0
+  electrodeSeries electrode = 0
+  float values = 0
+ }
+message Electrode
+ {
+  string name = 0
+  float impedance = 0
+ }
+message ElectrodeSeries
+ {
+  string name = 0
+ repeated  electrode values = 0
+ }
+message IrregularlySampledElectricalArray
+ {
+  electrodeSeries electrode = 0
+  float values = 0
+  irregularlySampledTimestampSeries time = 0
+ }
+message IrregularlySampledTimestampSeries
+ {
+  string name = 0
+ repeated  float values = 0
+ }
+message RegularlySampledElectricalArray
+ {
+  electrodeSeries electrode = 0
+  float values = 0
+  regularlySampledTimestampSeries time = 0
+ }
+message RegularlySampledTimestampSeries
+ {
+  string name = 0
+  float samplingRate = 0
+  float startingTime = 0
+  integer length = 0
+ repeated  float values = 0
+ }

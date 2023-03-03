@@ -26,6 +26,8 @@ linkml:DateOrDatetime linkml:DateOrDatetime
 
 linkml:Uriorcurie IRI
 
+linkml:Curie xsd:string
+
 linkml:Uri IRI
 
 linkml:Ncname xsd:string

@@ -1,5 +1,5 @@
 # Auto generated from hdmf_term_lists.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-01-20T16:13:52
+# Generation date: 2023-03-03T15:32:13
 # Schema: hdmf-term-lists
 #
 # id: https://w3id.org/hdmf-dev/hdmf-term-lists

@@ -42,7 +42,7 @@ classes:
     conforms_to: linkml:OneDimensionalSeries
     attributes:
       name:  # the row label
-        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        identifier: true  # must be unique in the YAML file
         conforms_to: linkml:OneDimensionalSeries.name
       values:
         range: float
@@ -57,7 +57,7 @@ classes:
     conforms_to: linkml:OneDimensionalSeries
     attributes:
       name:  # the row label
-        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        identifier: true
         conforms_to: linkml:OneDimensionalSeries.name
       sampling_rate:
         range: float
@@ -83,25 +83,38 @@ classes:
   Electrode:
     attributes:
       name:
-        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        identifier: true
         range: string
       impedance:
         range: float
         unit:
           ucum_code: Ohm
+      group:  # each electrode must belong to an electrode group
+        range: ElectrodeGroup
+        required: true
+
+  ElectrodeGroup:
+    attributes:
+      name:
+        identifier: true
+        range: string
+      description:
+        range: string
+      # values:
+      #   range: Electrode
+      #   multivalued: true
+      #   required: true
 
   ElectrodeSeries:
     conforms_to: linkml:OneDimensionalSeries
     attributes:
       name:  # the row label
-        key: true  # unique when nested (unlike identifier, which is a global identifier)
+        identifier: true  # unique when nested (unlike identifier, which is a global identifier)
         conforms_to: linkml:OneDimensionalSeries.name
       values:
         range: Electrode
-        multivalued: true
+        # multivalued: true
         required: true
-        inlined: true  # not needed if value is not an object
-        inlined_as_list: true
         conforms_to: linkml:OneDimensionalSeries.values
 
   ElectricalArray:
@@ -116,7 +129,6 @@ classes:
         range: ElectrodeSeries
         required: true
         conforms_to: linkml:TwoDimensionalArray.axis1
-        inlined: true
       values:
         range: float
         multivalued: true
@@ -137,3 +149,25 @@ classes:
       time:
         range: RegularlySampledTimestampSeries
 
+  NWBFile:
+    tree_root: true
+    attributes:
+      electrical_array:
+        range: RegularlySampledElectricalArray
+        inlined: true
+      time_axes:
+        range: RegularlySampledTimestampSeries
+        multivalued: true
+        inlined: true
+      electrode_axes:
+        range: ElectrodeSeries
+        multivalued: true
+        inlined: true
+      electrodes:
+        range: Electrode
+        multivalued: true
+        inlined: true
+      electrode_groups:
+        range: ElectrodeGroup
+        multivalued: true
+        inlined: true

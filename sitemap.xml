@@ -11,6 +11,36 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Boolean/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Date/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/DateOrDatetime/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Datetime/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Decimal/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Double/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/ElectricalArray/</loc>
          <lastmod>2023-03-04</lastmod>
          <changefreq>daily</changefreq>
@@ -26,12 +56,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Float/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Integer/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/NWBFile/</loc>
          <lastmod>2023-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Ncname/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Nodeidentifier/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Objectidentifier/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/OneDimensionalSeries/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/String/</loc>
          <lastmod>2023-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -51,12 +111,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Time/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/TimestampSeries/</loc>
          <lastmod>2023-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/TwoDimensionalArray/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Uri/</loc>
+         <lastmod>2023-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hdmf-dev.github.io/hdmf-term-lists/Uriorcurie/</loc>
          <lastmod>2023-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -112,11 +187,6 @@
     </url>
     <url>
          <loc>https://hdmf-dev.github.io/hdmf-term-lists/subject_id/</loc>
-         <lastmod>2023-03-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hdmf-dev.github.io/hdmf-term-lists/types/</loc>
          <lastmod>2023-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -2,7 +2,7 @@ time:
   name: time
   starting_time: 0.0
   sampling_rate: 10
-  length: 2
+  length: 2  # ideally this is taken from number of values on axis 0
 electrode:
   name: electrode
   values:

@@ -69,12 +69,13 @@ classes:
         required: true
         unit:
           ucum_code: s
-      length:  # must be defined when it cannot be inferred
+      length:  # must be defined by outer container when it cannot be inferred
         range: integer
       values:
         range: float
         multivalued: true
-        equals_expression: "{array_index} / {sampling_rate} + {offset}"  # TODO define array_index
+        equals_expression: "{array_index} / {sampling_rate} + {starting_time}"  # TODO define array_index
+        # equals_expression: "for i in range(length): {i} / {sampling_rate} + {starting_time}"
         conforms_to: linkml:OneDimensionalSeries.values
         unit:
           ucum_code: s

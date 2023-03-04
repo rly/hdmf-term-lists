@@ -15,3 +15,5 @@ values:  # order implied as row-wise
   - 2.2  # (0, elec1)
   - 3.3  # (1, elec0)
   - 4.4  # (1, elec1)
+
+# poetry run linkml-convert -s src/hdmf_term_lists/schema/hdmf_term_lists_conforms_to.yaml examples/IrregularlySampledElectricalArray-001.yaml -C IrregularlySampledElectricalArray

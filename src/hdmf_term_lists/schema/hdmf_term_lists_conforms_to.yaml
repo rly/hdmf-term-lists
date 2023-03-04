@@ -82,6 +82,7 @@ classes:
   Electrode:
     attributes:
       name:
+        key: true  # unique when nested (unlike identifier, which is a global identifier)
         range: string
       impedance:
         range: float
@@ -103,19 +104,22 @@ classes:
         conforms_to: linkml:OneDimensionalSeries.values
 
   ElectricalArray:
-    tree_root: true
     conforms_to: linkml:TwoDimensionalArray
     attributes:
       time:
         range: TimestampSeries  # abstract - could be IrregularlySampled... or RegularlySampled...
+        required: true
         conforms_to: linkml:TwoDimensionalArray.axis0
+        inlined: true
       electrode:
         range: ElectrodeSeries
+        required: true
         conforms_to: linkml:TwoDimensionalArray.axis1
-        inlined: true  # not needed if value is not an object
+        inlined: true
       values:
         range: float
         multivalued: true
+        required: true
         unit:
           ucum_code: V
         conforms_to: linkml:TwoDimensionalArray.values
@@ -128,6 +132,7 @@ classes:
 
   RegularlySampledElectricalArray:
     is_a: ElectricalArray
-    slot_usage:
+    attributes:
       time:
         range: RegularlySampledTimestampSeries
+

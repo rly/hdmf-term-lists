@@ -29,3 +29,5 @@ values:  # order implied as row-wise
 #   impedance: 1.2
 # - name: elec1
 #   impedance: 3.4
+
+# poetry run linkml-convert -s src/hdmf_term_lists/schema/hdmf_term_lists_conforms_to.yaml examples/RegularlySampledElectricalArray-001.yaml -C RegularlySampledElectricalArray

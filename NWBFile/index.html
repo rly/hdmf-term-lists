@@ -199,7 +199,13 @@
 <div class="mermaid"> classDiagram
     class NWBFile
       NWBFile : raw_ephys
+
+          NWBFile ..&gt; ElectricalArray : raw_ephys
+
       NWBFile : subject
+
+          NWBFile ..&gt; Subject : subject
+
 
 </div>
 <!-- no inheritance hierarchy -->

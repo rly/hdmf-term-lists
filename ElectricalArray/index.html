@@ -211,8 +211,15 @@
       TwoDimensionalArray &lt;|-- ElectricalArray
 
       ElectricalArray : axis0
+
+          ElectricalArray ..&gt; TimestampSeries : axis0
+
       ElectricalArray : axis1
+
+          ElectricalArray ..&gt; ElectrodeSeries : axis1
+
       ElectricalArray : values
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -309,21 +316,17 @@ slot_usage:
     name: axis0
     domain_of:
     - TwoDimensionalArray
-    - TwoDimensionalArray
     role: time
     range: TimestampSeries
   axis1:
     name: axis1
     domain_of:
     - TwoDimensionalArray
-    - TwoDimensionalArray
     role: electrode
     range: ElectrodeSeries
   values:
     name: values
     domain_of:
-    - OneDimensionalSeries
-    - TwoDimensionalArray
     - OneDimensionalSeries
     - TwoDimensionalArray
     range: float
@@ -343,21 +346,17 @@ slot_usage:
     name: axis0
     domain_of:
     - TwoDimensionalArray
-    - TwoDimensionalArray
     role: time
     range: TimestampSeries
   axis1:
     name: axis1
     domain_of:
     - TwoDimensionalArray
-    - TwoDimensionalArray
     role: electrode
     range: ElectrodeSeries
   values:
     name: values
     domain_of:
-    - OneDimensionalSeries
-    - TwoDimensionalArray
     - OneDimensionalSeries
     - TwoDimensionalArray
     range: float
@@ -372,7 +371,6 @@ attributes:
     owner: ElectricalArray
     domain_of:
     - TwoDimensionalArray
-    - TwoDimensionalArray
     role: time
     range: TimestampSeries
     required: true
@@ -386,7 +384,6 @@ attributes:
     owner: ElectricalArray
     domain_of:
     - TwoDimensionalArray
-    - TwoDimensionalArray
     role: electrode
     range: ElectrodeSeries
     required: true
@@ -399,8 +396,6 @@ attributes:
     alias: values
     owner: ElectricalArray
     domain_of:
-    - OneDimensionalSeries
-    - TwoDimensionalArray
     - OneDimensionalSeries
     - TwoDimensionalArray
     range: float

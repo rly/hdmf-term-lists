@@ -212,8 +212,13 @@
       OneDimensionalSeries &lt;|-- ElectrodeSeries
 
       OneDimensionalSeries : data_type
+
       OneDimensionalSeries : name
+
       OneDimensionalSeries : values
+
+          OneDimensionalSeries ..&gt; Any : values
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -317,6 +322,7 @@ attributes:
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
     rank: 1000
     key: true
+    required: true
   data_type:
     name: data_type
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
@@ -348,6 +354,7 @@ attributes:
     - OneDimensionalSeries
     - Electrode
     range: string
+    required: true
   data_type:
     name: data_type
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists

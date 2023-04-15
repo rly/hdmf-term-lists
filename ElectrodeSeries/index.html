@@ -211,8 +211,13 @@
       OneDimensionalSeries &lt;|-- ElectrodeSeries
 
       ElectrodeSeries : data_type
+
       ElectrodeSeries : name
+
       ElectrodeSeries : values
+
+          ElectrodeSeries ..&gt; Electrode : values
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -235,7 +240,7 @@
 <tbody>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
 <td></td>
 <td><a href="../OneDimensionalSeries/">OneDimensionalSeries</a></td>
 </tr>
@@ -310,8 +315,6 @@ slot_usage:
     domain_of:
     - OneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
-    - TwoDimensionalArray
     range: Electrode
 
 </code></pre>
@@ -328,8 +331,6 @@ slot_usage:
     domain_of:
     - OneDimensionalSeries
     - TwoDimensionalArray
-    - OneDimensionalSeries
-    - TwoDimensionalArray
     range: Electrode
 attributes:
   name:
@@ -343,6 +344,7 @@ attributes:
     - OneDimensionalSeries
     - Electrode
     range: string
+    required: true
   data_type:
     name: data_type
     from_schema: https://w3id.org/hdmf-dev/hdmf-term-lists
@@ -360,8 +362,6 @@ attributes:
     alias: values
     owner: ElectrodeSeries
     domain_of:
-    - OneDimensionalSeries
-    - TwoDimensionalArray
     - OneDimensionalSeries
     - TwoDimensionalArray
     range: Electrode

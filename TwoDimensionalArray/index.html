@@ -206,8 +206,17 @@
       TwoDimensionalArray &lt;|-- ElectricalArray
 
       TwoDimensionalArray : axis0
+
+          TwoDimensionalArray ..&gt; OneDimensionalSeries : axis0
+
       TwoDimensionalArray : axis1
+
+          TwoDimensionalArray ..&gt; OneDimensionalSeries : axis1
+
       TwoDimensionalArray : values
+
+          TwoDimensionalArray ..&gt; Any : values
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>

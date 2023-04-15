@@ -204,8 +204,15 @@
 <div class="mermaid"> classDiagram
     class Subject
       Subject : sex
+
+          Subject ..&gt; SubjectSex : sex
+
       Subject : species
+
+          Subject ..&gt; SubjectSpecies : species
+
       Subject : subject_id
+
 
 </div>
 <!-- no inheritance hierarchy -->
